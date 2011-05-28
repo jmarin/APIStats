@@ -1,15 +1,1 @@
-Adapted from akka-mist-sample(https://github.com/buka/akka-mist-sample).
-
-How to
-- Get SBT 0.7.5.RC0.
-- sbt update ~jetty-run.
-- Open http://localhost:8080/. If everythings work, you should see "it works".
-
-This sample uses
-- SBT 0.7.5.RC0
-- Scala 2.8.1
-- Jetty 8.0.0.M2
-- Akka 1.0
-- Akka SBT plugin
-- Akka http module
-- Akka Mist
+APIStats
