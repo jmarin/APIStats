@@ -35,7 +35,8 @@ libraryDependencies ++= {
 	val akkaVersion = "1.1.2"
 	Seq(
     	"se.scalablesolutions.akka" % "akka-actor" % akkaVersion % "compile->default",
-    	"se.scalablesolutions.akka" % "akka-remote" % akkaVersion % "compile->default"
+    	"se.scalablesolutions.akka" % "akka-remote" % akkaVersion % "compile->default",
+    	"se.scalablesolutions.akka" % "akka-testkit" % akkaVersion % "test"
     )
 }
  
