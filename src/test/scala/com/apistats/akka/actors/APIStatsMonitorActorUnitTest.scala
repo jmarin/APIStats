@@ -13,9 +13,7 @@ import org.scalatest.matchers.ShouldMatchers
 @RunWith(classOf[JUnitRunner])
 class APIStatsMonitorActorUnitTest extends WordSpec with BeforeAndAfterAll with ShouldMatchers with TestKit {
 
-
   val statsMonitorRef = actorOf(new APIStatsMonitorActor).start
-  
   
   override protected def afterAll(): Unit = {
     stopTestActor
