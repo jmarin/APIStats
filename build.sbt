@@ -4,6 +4,10 @@ version := "1.0"
 
 scalaVersion := "2.9.0-1"
 
+resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases"
+
+
+//Lift dependencies
 
 seq(WebPlugin.webSettings: _*)
 
@@ -23,6 +27,18 @@ libraryDependencies ++= Seq(
   "com.h2database" % "h2" % "1.2.138",
   "ch.qos.logback" % "logback-classic" % "0.9.26" % "compile->default"
 )
+
+
+//Akka dependencies
+
+libraryDependencies ++= {
+	val akkaVersion = "1.1.2"
+	Seq(
+    	"se.scalablesolutions.akka" % "akka-actor" % akkaVersion % "compile->default",
+    	"se.scalablesolutions.akka" % "akka-remote" % akkaVersion % "compile->default"
+    )
+}
+ 
 
 libraryDependencies += "org.scalatest" % "scalatest_2.9.0" % "1.6.1" % "test"
 
