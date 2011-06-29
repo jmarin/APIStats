@@ -5,7 +5,7 @@
   <body class="lift:content_id=main">
     <div id="main" class="lift:surround?with=default;at=content">
       <!-- the behavior of the div -->
-      <div class="lift:comet?type=Chat">
+      <div class="lift:comet?type=APIStatsCometActor">
         Some messages
         <ul>
           <li>A message</li>
@@ -16,8 +16,8 @@
       
       <div>
         <form class="lift:form.ajax">
-          <input class="lift:ChatIn" id="chat_in"/>
-          <input type="submit" value="Say Something"/>
+          <input type="hidden" class="lift:SendMessage" id="chat_in"/>
+          <input type="submit" value="Send message to Akka"/>
         </form>
       </div>
     </div>

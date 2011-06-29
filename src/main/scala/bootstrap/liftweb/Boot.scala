@@ -16,7 +16,7 @@ import Loc._
 class Boot {
   def boot {
     // where to search snippet
-    LiftRules.addToPackages("code")
+    LiftRules.addToPackages("com.apistats.lift")
 
     // Build SiteMap
     val entries = List(Menu.i("Home") / "index", // the simple way to declare a menu
