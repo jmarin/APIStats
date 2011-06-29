@@ -6,6 +6,8 @@ scalaVersion := "2.9.0-1"
 
 resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases"
 
+resolvers += "Maven Local Repository" at Path.userHome.absolutePath + "/.m2/repository"
+
 
 //Lift dependencies
 
