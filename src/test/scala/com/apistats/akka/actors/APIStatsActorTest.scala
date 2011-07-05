@@ -32,7 +32,7 @@ class APIStatsActorTest extends WordSpec with BeforeAndAfterAll with ShouldMatch
     "respond with the URL of the sent APIStatsMessage " in {
       within(500 millis) {
         val message = new APIStatsMessage("Census API - By Coordinates", "www.broadbandmap.gov", "broadbandmap", "census", LinkedHashMap("geographyType" -> "block"),
-        LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime())
+        LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 23)
         statsRef ! message
         expectMsg("http://www.broadbandmap.gov/broadbandmap/census/block?latitude=42.456&longitude=-74.987&format=json")
       }
