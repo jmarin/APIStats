@@ -40,6 +40,12 @@ class Boot {
 
     // Force the request to be UTF-8
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
+    
+    //Output HTML5 instead of XHTML
+    //LiftRules.htmlProperties.default.set((r:Req)=>new Html5Properties(r.userAgent))
+    
+    //Startup MongoDB configuration
+    MongoConfig.init    
 
   }
 }
