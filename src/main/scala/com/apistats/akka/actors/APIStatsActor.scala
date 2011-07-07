@@ -5,12 +5,21 @@ import akka.actor.Actor._
 import com.apistatsmodel.messages.APIStatsMessage
 import com.apistats.lift.comet._
 
+
+object APIStatsActor {
+  
+  def getMessageURL(msg:APIStatsMessage) = {
+    msg.toURL
+  }
+}
+
+
 class APIStatsActor extends Actor {
 
   def receive = {
     case msg: APIStatsMessage => {
       //self reply (msg.toURL) 
-      APIStatsLiftActor ! msg.toURL
+      APIStatsLiftActor ! APIStatsActor.getMessageURL(msg)
     }
     case _ => self reply ("Test OK")
   }
