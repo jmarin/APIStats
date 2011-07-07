@@ -18,7 +18,6 @@ class APIStatsActor extends Actor {
 
   def receive = {
     case msg: APIStatsMessage => {
-      //self reply (msg.toURL) 
       APIStatsLiftActor ! APIStatsActor.getMessageURL(msg)
     }
     case _ => self reply ("Test OK")
