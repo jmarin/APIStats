@@ -24,7 +24,7 @@ class APIStatsActorTest extends WordSpec with BeforeAndAfterAll with ShouldMatch
 
   "An APIStatsActor" should {
     "respond to test message " in {
-     within(100 millis){
+     within(500 millis){
        statsRef ! "test"
        expectMsg("Test OK")
      } 
