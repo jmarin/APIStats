@@ -50,7 +50,6 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
       val origQueryParams = LinkedHashMap[String, String]()
       queryParams.foreach(x => {
         origQueryParams ++= LinkedHashMap(x.key.toString -> x.value.toString)
-        //assert(messageDoc.queryParams.toString === origQueryParams.toString)
       })
 
       //origQueryParams.foreach(x => println(x._1 + "=" + x._2))
