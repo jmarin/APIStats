@@ -29,21 +29,13 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
   }
 
   "An new APIStatsMessageDoc" should {
-    "be stored in MongoDB " in {
+    "be saved in MongoDB" in {
       val message = new APIStatsMessage("Test", "www.broadbandmap.gov", "broadbandmap", "census", LinkedHashMap("geographyType" -> "block"),
         LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 23)
+      APIStatsMessageDoc.saveMessage(message)
 
-      val record = APIStatsMessageDoc.createRecord
-        .apiName(message.apiName)
-        .baseURL(message.baseURL)
-        .contextPath(message.contextPath)
-        .apiResource(message.apiResource)
-        //.pathParams(message.pathParams.toMap)
-        .queryParams(List(QueryParam.createRecord.key("latitude").value("42.456"), QueryParam.createRecord.key("longitude").value("-74.987")))
-        .date(message.date.toCalendar(new Locale("en-US")).getTime)
-        .responseTime(message.reponseTime)
-        .save
     }
+
     "and be retrieved from MongoDB" in {
       val query = QueryBuilder.start("apiName").is("Test").get
       val messageDocIterator = APIStatsMessageDoc.find(query)
@@ -61,7 +53,7 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
         //assert(messageDoc.queryParams.toString === origQueryParams.toString)
       })
 
-      origQueryParams.foreach(x => println(x._1 + "=" + x._2))
+      //origQueryParams.foreach(x => println(x._1 + "=" + x._2))
 
       /*val queryParams = messageDoc.queryParams.asDBObject
       val queryParamsList = queryParams.toMap().toList
@@ -82,7 +74,7 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
       val messageDocIterator = APIStatsMessageDoc.find(query)
       val messageDoc = messageDocIterator.elements.next
       assert(messageDoc.delete_! === true)
-      
+
     }
   }
 }

@@ -7,10 +7,10 @@ import net.liftweb.mongodb.record.BsonRecord
 
 import net.liftweb.mongodb.JsonObject
 
-class QueryParam private () extends BsonRecord[QueryParam] {
-  def meta = QueryParam
+class APIParam private () extends BsonRecord[APIParam] {
+  def meta = APIParam
 
   object key extends StringField(this, 100)
   object value extends StringField(this, 100)
 }
-object QueryParam extends QueryParam with BsonMetaRecord[QueryParam]
+object APIParam extends APIParam with BsonMetaRecord[APIParam]
