@@ -1,4 +1,4 @@
-package com.apistats.lift.model
+package com.apistats.lift.record
 
 import scala.collection.JavaConversions._
 import com.mongodb.QueryBuilder

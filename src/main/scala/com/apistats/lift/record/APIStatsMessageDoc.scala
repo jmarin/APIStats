@@ -1,4 +1,4 @@
-package com.apistats.lift.model//import net.liftweb.mongodb.record.field.MongoJsonObjectListField
+package com.apistats.lift.record//import net.liftweb.mongodb.record.field.MongoJsonObjectListField
 import net.liftweb.record.field.LongField;import net.liftweb.mongodb.JsonObject;import net.liftweb.record.field._
 import net.liftweb.mongodb.record.field._
 

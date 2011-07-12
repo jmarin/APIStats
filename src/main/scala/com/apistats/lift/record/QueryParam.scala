@@ -1,4 +1,4 @@
-package com.apistats.lift.model
+package com.apistats.lift.record
 import net.liftweb.record.field.StringField
 
 import net.liftweb.mongodb.record.BsonMetaRecord
