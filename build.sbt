@@ -4,9 +4,14 @@ version := "1.0"
 
 scalaVersion := "2.9.0-1"
 
+scalacOptions += "-deprecation"
+
 resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases"
 
+resolvers += ScalaToolsSnapshots
+
 resolvers += "Maven Local Repository" at Path.userHome.absolutePath + "/.m2/repository"
+
 
 
 //Lift dependencies
@@ -52,5 +57,7 @@ libraryDependencies += "apistatsmodel" % "apistatsmodel_2.9.0-1" % "1.0"
 libraryDependencies += "org.scalatest" % "scalatest_2.9.0" % "1.6.1" % "test"
 
 libraryDependencies += "joda-time" % "joda-time" % "1.6.2"
+
+libraryDependencies += "com.foursquare" %% "rogue" % "1.0.14-SNAPSHOT"
 
 

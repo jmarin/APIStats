@@ -31,7 +31,7 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
   "An new APIStatsMessageDoc" should {
     "be saved in MongoDB" in {
       val message = new APIStatsMessage("Test", "www.broadbandmap.gov", "broadbandmap", "census", LinkedHashMap("geographyType" -> "block"),
-        LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 23)
+        LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 23, true)
       APIStatsMessageDoc.saveMessage(message)
 
     }
@@ -69,6 +69,9 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
 
     }
     "and be deleted from MongoDB" in {
+      val message = new APIStatsMessage("Test", "www.broadbandmap.gov", "broadbandmap", "census", LinkedHashMap("geographyType" -> "block"),
+        LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 23, true)
+            
       val query = QueryBuilder.start("apiName").is("Test").get
       val messageDocIterator = APIStatsMessageDoc.find(query)
       val messageDoc = messageDocIterator.elements.next
