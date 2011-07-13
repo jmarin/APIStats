@@ -14,6 +14,7 @@ import bootstrap.liftweb._
 import org.scalatest.WordSpec
 import net.liftweb.json._
 import net.liftweb.json.JsonParser
+import com.foursquare.rogue.Rogue._
 
 @RunWith(classOf[JUnitRunner])
 class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with ShouldMatchers {
@@ -51,22 +52,13 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
       queryParams.foreach(x => {
         origQueryParams ++= LinkedHashMap(x.key.toString -> x.value.toString)
       })
-
-      //origQueryParams.foreach(x => println(x._1 + "=" + x._2))
-
-      /*val queryParams = messageDoc.queryParams.asDBObject
-      val queryParamsList = queryParams.toMap().toList
-      val queryParamsListReversed = queryParamsList.reverse
-      val queryParamsLinkedHashMap = queryParamsListReversed.toMap
-      
-      queryParamsLinkedHashMap.foreach(x => println(x))*/
-
-      println("")
-      println("")
-      println("")
-      //println(queryParams.companion.toString)
-      //queryParams.foreach(println(_))
-
+    
+    }
+    "and count the number of Test messages that are geospatial" in {
+       assert((APIStatsMessageDoc where (_.isGeospatialAPI eqs true) and (_.apiName eqs "Test") count()) === 1)
+    }
+    "and count the number of total messages" in {
+      assert (APIStatsMessageDoc.numberOMessagesByAPIName("foo") === 2)
     }
     "and be deleted from MongoDB" in {
       val message = new APIStatsMessage("Test", "www.broadbandmap.gov", "broadbandmap", "census", LinkedHashMap("geographyType" -> "block"),
