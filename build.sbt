@@ -10,7 +10,7 @@ resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/release
 
 resolvers += ScalaToolsSnapshots
 
-resolvers += "Maven Local Repository" at Path.userHome.absolutePath + "/.m2/repository"
+//resolvers += "Maven Local Repository" at Path.userHome.absolutePath + "/.m2/repository"
 
 
 
