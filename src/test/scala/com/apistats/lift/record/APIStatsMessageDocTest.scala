@@ -23,10 +23,18 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
 
   override def beforeAll(): Unit = {
     initLift.boot
+    val message1 = new APIStatsMessage("foo", "test1", "", "",  LinkedHashMap("geographyType" -> "block"), LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime, 0, false)
+    val message2 = new APIStatsMessage("foo", "test2", "", "", LinkedHashMap("geographyType" -> "block"), LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime, 0, false)
+    APIStatsMessageDoc.saveMessage(message1)
+    APIStatsMessageDoc.saveMessage(message2)
   }
 
   override def afterAll(): Unit = {
-
+    val messages = APIStatsMessageDoc where (_.apiName eqs "foo")
+    messages.foreach(message =>{
+      message.delete_!
+    })
+    
   }
 
   "An new APIStatsMessageDoc" should {
@@ -34,7 +42,6 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
       val message = new APIStatsMessage("Test", "www.broadbandmap.gov", "broadbandmap", "census", LinkedHashMap("geographyType" -> "block"),
         LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 23, true)
       APIStatsMessageDoc.saveMessage(message)
-
     }
 
     "and be retrieved from MongoDB" in {
@@ -52,18 +59,18 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
       queryParams.foreach(x => {
         origQueryParams ++= LinkedHashMap(x.key.toString -> x.value.toString)
       })
-    
+
     }
     "and count the number of Test messages that are geospatial" in {
-       assert((APIStatsMessageDoc where (_.isGeospatialAPI eqs true) and (_.apiName eqs "Test") count()) === 1)
+      assert((APIStatsMessageDoc where (_.isGeospatialAPI eqs true) and (_.apiName eqs "Test") count ()) === 1)
     }
     "and count the number of total messages" in {
-      assert (APIStatsMessageDoc.numberOMessagesByAPIName("foo") === 2)
+      assert(APIStatsMessageDoc.numberOMessagesByAPIName("foo") === 2)
     }
     "and be deleted from MongoDB" in {
       val message = new APIStatsMessage("Test", "www.broadbandmap.gov", "broadbandmap", "census", LinkedHashMap("geographyType" -> "block"),
         LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 23, true)
-            
+
       val query = QueryBuilder.start("apiName").is("Test").get
       val messageDocIterator = APIStatsMessageDoc.find(query)
       val messageDoc = messageDocIterator.elements.next
