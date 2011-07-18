@@ -44,7 +44,7 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
       APIStatsMessageDoc.saveMessage(message)
     }
 
-    "and be retrieved from MongoDB" in {
+    "be retrieved from MongoDB" in {
       val query = QueryBuilder.start("apiName").is("Test").get
       val messageDocIterator = APIStatsMessageDoc.find(query)
       val messageDoc = messageDocIterator.elements.next
@@ -61,13 +61,13 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
       })
 
     }
-    "and count the number of Test messages that are geospatial" in {
+    "count the number of Test messages that are geospatial" in {
       assert((APIStatsMessageDoc where (_.isGeospatialAPI eqs true) and (_.apiName eqs "Test") count ()) === 1)
     }
-    "and count the number of total messages" in {
+    "count the number of total foo messages" in {
       assert(APIStatsMessageDoc.numberOMessagesByAPIName("foo") === 2)
     }
-    "and be deleted from MongoDB" in {
+    "be deleted from MongoDB" in {
       val message = new APIStatsMessage("Test", "www.broadbandmap.gov", "broadbandmap", "census", LinkedHashMap("geographyType" -> "block"),
         LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 23, true)
 
@@ -75,7 +75,7 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
       val messageDocIterator = APIStatsMessageDoc.find(query)
       val messageDoc = messageDocIterator.elements.next
       assert(messageDoc.delete_! === true)
-
+      assert((APIStatsMessageDoc where (_.isGeospatialAPI eqs true) and (_.apiName eqs "Test") count ()) === 0)
     }
   }
 }
