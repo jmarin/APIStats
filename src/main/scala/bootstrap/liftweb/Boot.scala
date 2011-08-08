@@ -44,6 +44,9 @@ class Boot {
     //Output HTML5 instead of XHTML
     LiftRules.htmlProperties.default.set((r:Req)=>new Html5Properties(r.userAgent))
     
+    //Disable servive as XHTML
+    LiftRules.useXhtmlMimeType = false
+    
     //Startup MongoDB configuration
     MongoConfig.init    
 
