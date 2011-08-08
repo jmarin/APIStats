@@ -42,7 +42,7 @@ class Boot {
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
     
     //Output HTML5 instead of XHTML
-    //LiftRules.htmlProperties.default.set((r:Req)=>new Html5Properties(r.userAgent))
+    LiftRules.htmlProperties.default.set((r:Req)=>new Html5Properties(r.userAgent))
     
     //Startup MongoDB configuration
     MongoConfig.init    
