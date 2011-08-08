@@ -12,8 +12,8 @@ import com.mongodb.{ Mongo, ServerAddress }
 object MongoConfig extends Loggable {
 
   def init: Unit = {
-    val mongoserver:String = Props.get("mongoserver") openOr("127.0.0.1")
-    val mongoport:Int = (Props.get("mongoport") openOr ("27017")).toInt
+    val mongoserver:String = Props.get("mongoserver") openOr("")
+    val mongoport:Int = (Props.get("mongoport") openOr ("")).toInt
     val server = new ServerAddress(mongoserver, mongoport)
     val mongoOptions = new MongoOptions
     mongoOptions.socketTimeout = 100
