@@ -1,4 +1,4 @@
-name := "APIStats"
+nqodnoqename := "APIStats"
 
 version := "1.0"
 
