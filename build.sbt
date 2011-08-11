@@ -6,19 +6,18 @@ scalaVersion := "2.9.0-1"
 
 scalacOptions += "-deprecation"
 
-resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases"
+//resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases"
 
 resolvers += ScalaToolsSnapshots
 
-
-
+checksums := Nil
 
 //Lift dependencies
 
 seq(WebPlugin.webSettings: _*)
 
 libraryDependencies ++= {
-	val liftVersion = "2.4-M1"
+	val liftVersion = "2.4-M3"
 	Seq(
     	"net.liftweb" %% "lift-webkit" % liftVersion % "compile->default",
     	"net.liftweb" %% "lift-mapper" % liftVersion % "compile->default",
@@ -57,6 +56,6 @@ libraryDependencies += "org.scalatest" % "scalatest_2.9.0" % "1.6.1" % "test"
 
 libraryDependencies += "joda-time" % "joda-time" % "1.6.2"
 
-libraryDependencies += "com.foursquare" %% "rogue" % "1.0.14-SNAPSHOT"
+libraryDependencies += "com.foursquare" %% "rogue" % "1.0.15"
 
 
