@@ -10,6 +10,8 @@ scalacOptions += "-deprecation"
 
 resolvers += ScalaToolsSnapshots
 
+resolvers += "download.java.net maven2" at "http://download.java.net/maven/2" 
+
 checksums := Nil
 
 //Lift dependencies
