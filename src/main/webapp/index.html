@@ -1,25 +1,32 @@
 <!DOCTYPE HTML>
 <html>
-  <head><title>Home</title></head>
-  <body class="lift:content_id=main">
-    <div id="main" class="lift:surround?with=default;at=content">
-      <!-- the behavior of the div -->
-      <div class="lift:comet?type=APIStatsCometActor">
-        Some messages
-        <ul>
-          <li>A message</li>
-          <li class="clearable">Another message</li>
-          <li class="clearable">A third message</li>
-        </ul>
-      </div>
-      
-      <div>
-        <form class="lift:form.ajax">
-          <input type="hidden" class="lift:SendMessage" id="chat_in"/>
-          <input type="submit" value="Send message to Akka"/>
-        </form>
-      </div>
-    </div>
-  </body>
+<head>
+<title>Home</title>
+</head>
+<body class="lift:content_id=main">
+	<div id="main" class="lift:surround?with=default;at=content">
+		<div class="lift:comet?type=APIStatsCometActor">
+			Total number of API calls:<div id="apicount" class="style=font-weight:bold"></div>
+		</div>
+
+		<!-- the behavior of the div 
+		<div class="lift:comet?type=APIStatsCometActor">
+			Some messages
+			<ul>
+				<li>A message</li>
+				<li class="clearable">Another message</li>
+				<li class="clearable">A third message</li>
+			</ul>
+		</div>
+		-->
+
+		<div>
+			<form class="lift:form.ajax">
+				<input type="hidden" class="lift:SendMessage" id="chat_in" /> <input
+					type="submit" value="Send message to Akka" />
+			</form>
+		</div>
+	</div>
+</body>
 </html>
 

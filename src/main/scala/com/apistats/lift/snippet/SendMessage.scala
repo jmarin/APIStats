@@ -34,7 +34,7 @@ object SendMessage {
    */
   def render = SHtml.onSubmit(s => {
 
-    val message = new APIStatsMessage("Census API - By Coordinates", "www.broadbandmap.gov", "broadbandmap", "census", LinkedHashMap("geographyType" -> "block"),
+    val message = new APIStatsMessage("Test", "www.broadbandmap.gov", "broadbandmap", "census", LinkedHashMap("geographyType" -> "block"),
       LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 3, true)
 
     val statsActor = remote.actorFor("apistats-actor","localhost",2552)
