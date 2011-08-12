@@ -16,6 +16,6 @@ class APIStatsCometActor extends CometActor with CometListener {
     case count: Long => apiMessagesCount = count; reRender()
   }
 
-  def render = "#apicount *" #> apiMessagesCount
+  def render = "#apicount *" #> <span><strong>{apiMessagesCount}</strong></span>
 
 }
