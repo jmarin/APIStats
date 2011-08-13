@@ -6,7 +6,7 @@ scalaVersion := "2.9.0-1"
 
 scalacOptions += "-deprecation"
 
-//resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases"
+resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases"
 
 resolvers += ScalaToolsSnapshots
 
