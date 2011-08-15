@@ -1,18 +1,17 @@
 package com.apistats.akka.actors
 
-import akka.actor._
 import akka.actor.Actor._
-import com.apistatsmodel.messages.APIStatsMessage
+import akka.actor._
 import com.apistats.lift.comet._
+import com.apistatsmodel.messages.APIStatsMessage
 
 
 object APIStatsActor {
   
   def getMessageURL(msg:APIStatsMessage) = {
-    msg.toURL
+    msg.resourceURL
   }
 }
-
 
 class APIStatsActor extends Actor {
 

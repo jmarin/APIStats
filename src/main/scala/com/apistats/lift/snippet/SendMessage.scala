@@ -1,16 +1,14 @@
-package com.apistats.lift.snippet
-import scala.collection.mutable.LinkedHashMap
-import com.apistatsmodel.messages.APIStatsMessage
-import net.liftweb._
-import http._
-import js._
-import JsCmds._
-import JE._
-import com.apistats.lift.comet._
+package com.apistats.lift.snippet
 import akka.actor.Actor._
 import akka.actor._
-import com.apistats.akka.actors._
+import com.apistatsmodel.messages.APIStatsMessage
+import net.liftweb.http.js.JE._
+import net.liftweb.http.js.JsCmds._
+import net.liftweb.http.js._
+import net.liftweb.http._
+import net.liftweb._
 import org.joda.time.DateTime
+import scala.collection.mutable.LinkedHashMap
 
 /**
  * A snippet transforms input to output... it transforms
@@ -32,15 +30,15 @@ object SendMessage {
    * to the ChatServer and then returns JavaScript which
    * clears the input.
    */
-  def render = SHtml.onSubmit(s => {
+  def render = SHtml.onSubmit( s => {
 
-    val message = new APIStatsMessage("Test", "www.broadbandmap.gov", "broadbandmap", "census", LinkedHashMap("geographyType" -> "block"),
-      LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 3, true)
+    val message = new APIStatsMessage( "Test", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=42.456&longitude=-74.987&format=json", LinkedHashMap( "geographyType" -> "block" ),
+      LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime(), 3, true )
 
-    val statsActor = remote.actorFor("apistats-actor","localhost",2552)
+    val statsActor = remote.actorFor( "apistats-actor", "localhost", 2552 )
     statsActor ! message
     //APIStatsLiftActor ! s
-    SetValById("chat_in", "")
-  })
+    SetValById( "chat_in", "" )
+  } )
 
 }
