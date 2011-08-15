@@ -3,12 +3,13 @@ package com.apistats.lift {
 
     import com.apistats.lift.record.APIStatsMessageDoc
     import scala.xml.NodeSeq
+    import net.liftweb._
+    import util.Helpers._
+    import common._
 
-    class InitStats {
-
-      def numberOfTotalMessages(): NodeSeq = {
-        <span>APIStatsMessageDoc.numberOfTotalMessages</span>
-      }
+    object InitStats {
+      
+      def render = "*" #> <strong>{APIStatsMessageDoc.numberOfTotalMessages}</strong>
 
     }
   }
