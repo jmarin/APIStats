@@ -9,8 +9,16 @@ package com.apistats.lift {
 
     object InitStats {
       
-      def render = "*" #> <strong>{APIStatsMessageDoc.numberOfTotalMessages}</strong>
-
+      def totalCount():NodeSeq = {
+        <strong>{APIStatsMessageDoc.numberOfTotalMessages}</strong>
+      }
+      
+      def percentageGeospatial():NodeSeq = {
+        val percentageGeospatial = (APIStatsMessageDoc.numberOfTotalGeospatialMessages / APIStatsMessageDoc.numberOfTotalMessages)* 100
+        println("% Geospatial: " + percentageGeospatial)
+        <span>{percentageGeospatial}</span>
+      }
+            
     }
   }
 }
