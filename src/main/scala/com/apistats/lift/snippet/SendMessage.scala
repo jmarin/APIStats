@@ -32,13 +32,10 @@ object SendMessage {
    */
   def render = SHtml.onSubmit( s => {
 
-<<<<<<< HEAD
-    val message = new APIStatsMessage( "Test", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=42.456&longitude=-74.987&format=json", LinkedHashMap( "geographyType" -> "block" ),
-      LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime(), 3, true, "", false )
-=======
+
     val message = new APIStatsMessage( "xxx", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=42.456&longitude=-74.987&format=json", LinkedHashMap( "geographyType" -> "block" ),
-      LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime(), 3, true )
->>>>>>> 054e8d5ae4900e26d3df581a7b6df2a17b2ccbbe
+      LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime(), 3, true, "", false )
+
 
     val statsActor = remote.actorFor( "apistats-actor", "localhost", 2552 )
     statsActor ! message
