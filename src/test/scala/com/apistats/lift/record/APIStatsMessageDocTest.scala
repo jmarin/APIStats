@@ -19,9 +19,9 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
 
   override def beforeAll() : Unit = {
     initLift.boot
-    val message1 = new APIStatsMessage( "foo", "test1", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, true, "", false )
+    val message1 = new APIStatsMessage( "foo", "test1", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, true, "", true )
     val message2 = new APIStatsMessage( "foo", "test2", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, false, "", false )
-    val message3 = new APIStatsMessage( "foo", "test3", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, false, "", false )
+    val message3 = new APIStatsMessage( "foo", "test3", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, false, "", true )
     APIStatsMessageDoc.saveMessage(message1)
     APIStatsMessageDoc.saveMessage(message2)
     APIStatsMessageDoc.saveMessage(message3)
@@ -57,7 +57,6 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
       queryParams.foreach( x => {
         origQueryParams ++= LinkedHashMap( x.key.toString -> x.value.toString )
       } )
-
     }
     "count the number of Test messages that are geospatial in Test" in {
       assert( ( APIStatsMessageDoc where ( _.isGeospatialAPI eqs true ) and ( _.apiName eqs "Test" ) count () ) === 1 )
@@ -67,6 +66,9 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
     }
     "count the percentage of geospatial messages in API foo" in {
       assert(APIStatsMessageDoc.percentageGeospatialMessagesByAPIName("foo").toString === "33.333")
+    }
+    "count the percentage of failed messages in API foo" in {
+      assert(APIStatsMessageDoc.percentageFailedByAPIName("foo").toString === "66.667")
     }
     "be deleted from MongoDB" in {
       val query = QueryBuilder.start( "apiName" ).is( "Test" ).get

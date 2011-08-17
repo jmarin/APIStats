@@ -14,11 +14,14 @@ package com.apistats.lift {
       }
       
       def percentageGeospatial():NodeSeq = {
-        
         <span>{APIStatsMessageDoc.percentageGeospatialMessages}</span>
-        
       }
-            
+      
+      def percentageFailed():NodeSeq = {
+        <span>{APIStatsMessageDoc.percentageFailed}</span>
+      }
+      
+    
     }
   }
 }
