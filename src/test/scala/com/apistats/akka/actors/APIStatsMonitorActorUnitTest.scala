@@ -22,13 +22,13 @@ class APIStatsMonitorActorUnitTest extends WordSpec with BeforeAndAfterAll with 
   
   "An APIStatsMonitorActor" should {
     "respond that it's working when a 'test' message is sent " in {
-      within(100 millis){
+      within(500 millis){
         statsMonitorRef ! "test"
         expectMsg("Actor is working")
       }
     }
     "respond that it's working and acknowledge that random message was sent " in {
-      within(100 millis){
+      within(500 millis){
         statsMonitorRef ! "xxx"
         expectMsg("Actor is working, a different message from 'test' was sent")
       }
