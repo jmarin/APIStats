@@ -19,10 +19,13 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
 
   override def beforeAll() : Unit = {
     initLift.boot
-    val message1 = new APIStatsMessage( "foo", "test1", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, false, "", false )
+    val message1 = new APIStatsMessage( "foo", "test1", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, true, "", false )
     val message2 = new APIStatsMessage( "foo", "test2", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, false, "", false )
-    APIStatsMessageDoc.saveMessage( message1 )
-    APIStatsMessageDoc.saveMessage( message2 )
+    val message3 = new APIStatsMessage( "foo", "test3", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, false, "", false )
+    APIStatsMessageDoc.saveMessage(message1)
+    APIStatsMessageDoc.saveMessage(message2)
+    APIStatsMessageDoc.saveMessage(message3)
+    
   }
 
   override def afterAll() : Unit = {
@@ -56,16 +59,16 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
       } )
 
     }
-    "count the number of Test messages that are geospatial" in {
+    "count the number of Test messages that are geospatial in Test" in {
       assert( ( APIStatsMessageDoc where ( _.isGeospatialAPI eqs true ) and ( _.apiName eqs "Test" ) count () ) === 1 )
     }
     "count the number of total foo messages" in {
-      assert( APIStatsMessageDoc.numberOMessagesByAPIName( "foo" ) === 2 )
+      assert( APIStatsMessageDoc.numberOMessagesByAPIName( "foo" ) === 3 )
+    }
+    "count the percentage of geospatial messages in API foo" in {
+      assert(APIStatsMessageDoc.percentageGeospatialMessagesByAPIName("foo").toString === "33.333")
     }
     "be deleted from MongoDB" in {
-      val message = new APIStatsMessage( "Test", "broadbandmap", "www.broadbandmap.gov", LinkedHashMap( "geographyType" -> "block" ),
-        LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime(), 23, true, "", false )
-
       val query = QueryBuilder.start( "apiName" ).is( "Test" ).get
       val messageDocIterator = APIStatsMessageDoc.find( query )
       val messageDoc = messageDocIterator.elements.next

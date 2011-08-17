@@ -14,9 +14,9 @@ package com.apistats.lift {
       }
       
       def percentageGeospatial():NodeSeq = {
-        val percentageGeospatial = (APIStatsMessageDoc.numberOfTotalGeospatialMessages / APIStatsMessageDoc.numberOfTotalMessages)* 100
-        println("% Geospatial: " + percentageGeospatial)
-        <span>{percentageGeospatial}</span>
+        
+        <span>{APIStatsMessageDoc.percentageGeospatialMessages}</span>
+        
       }
             
     }

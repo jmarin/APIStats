@@ -10,7 +10,7 @@ object APIStatsLiftActor extends LiftActor with ListenerManager {
 
   private var apiMessagesCount: Long = 0
 
-  def createUpdate = apiMessagesCount //msgs
+  def createUpdate = apiMessagesCount
 
   override def lowPriority = {
     case msg: APIStatsMessage => {
