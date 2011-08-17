@@ -8,7 +8,7 @@ import org.joda.time.DateTime
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.{BeforeAndAfterAll, WordSpec}
+import org.scalatest.{ BeforeAndAfterAll, WordSpec }
 import scala.collection.JavaConversions._
 import scala.collection.mutable.LinkedHashMap
 
@@ -19,8 +19,8 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
 
   override def beforeAll() : Unit = {
     initLift.boot
-    val message1 = new APIStatsMessage( "foo", "test1", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, false )
-    val message2 = new APIStatsMessage( "foo", "test2", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, false )
+    val message1 = new APIStatsMessage( "foo", "test1", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, false, "", false )
+    val message2 = new APIStatsMessage( "foo", "test2", "", LinkedHashMap( "geographyType" -> "block" ), LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime, 0, false, "", false )
     APIStatsMessageDoc.saveMessage( message1 )
     APIStatsMessageDoc.saveMessage( message2 )
   }
@@ -36,7 +36,7 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
   "An new APIStatsMessageDoc" should {
     "be saved in MongoDB" in {
       val message = new APIStatsMessage( "Test", "broadbandmap", "www.broadbandmap.gov", LinkedHashMap( "geographyType" -> "block" ),
-        LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime(), 23, true )
+        LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime(), 23, true, "", false )
       APIStatsMessageDoc.saveMessage( message )
     }
 
@@ -64,7 +64,7 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
     }
     "be deleted from MongoDB" in {
       val message = new APIStatsMessage( "Test", "broadbandmap", "www.broadbandmap.gov", LinkedHashMap( "geographyType" -> "block" ),
-        LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime(), 23, true )
+        LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime(), 23, true, "", false )
 
       val query = QueryBuilder.start( "apiName" ).is( "Test" ).get
       val messageDocIterator = APIStatsMessageDoc.find( query )

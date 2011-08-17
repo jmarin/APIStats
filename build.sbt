@@ -1,6 +1,6 @@
 name := "APIStats"
 
-version := "1.0"
+version := "1.1"
 
 scalaVersion := "2.9.0-1"
 
@@ -51,7 +51,7 @@ libraryDependencies ++= {
 
 //APIStatsModel dependency (needs to be in local repository first)
 
-libraryDependencies += "apistatsmodel" % "apistatsmodel_2.9.0-1" % "1.0"
+libraryDependencies += "apistatsmodel" % "apistatsmodel_2.9.0-1" % "1.1"
 
 
 libraryDependencies += "org.scalatest" % "scalatest_2.9.0" % "1.6.1" % "test"
