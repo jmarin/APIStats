@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family:Arial;	
+}
+
+#header {
+	width:100%;
+	background-color: #FFF;
+}
+
+li {
+	display: inline;
+	list-style-type:none;
+	padding-right:13px;
+	position:absolute;
+	font-size:12px;
+}
+
+
+#rightNavList li {
+	right:100px;
+}
+
+#leftNavContainer {
+	background-color:#FFF000
+	left:10px;
+}
+
+#leftNavList li {
+	left:100px;
+}
+
+
+
