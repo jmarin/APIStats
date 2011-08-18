@@ -36,7 +36,7 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
 
   }
 
-  "An new APIStatsMessageDoc" should {
+  "A new APIStatsMessageDoc" should {
     "be saved in MongoDB" in {
       val message = new APIStatsMessage( "Test", "broadbandmap", "www.broadbandmap.gov", LinkedHashMap( "geographyType" -> "block" ),
         LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime(), 23, true, "", false )
