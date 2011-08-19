@@ -6,6 +6,7 @@ package com.apistats.lift {
     import net.liftweb._
     import util.Helpers._
     import common._
+    import org.joda.time.DateTime
 
     object InitStats {
       
@@ -21,6 +22,17 @@ package com.apistats.lift {
         <span>{APIStatsMessageDoc.percentageFailed}</span>
       }
       
+      def avgResponseTimeLas1000Messages():NodeSeq = {
+        <span>{APIStatsMessageDoc.avgResponseTimeLas1000Messages("")}</span>
+      }
+      
+      def maxResponseTimeLas1000Messages():NodeSeq = {
+        <span>{APIStatsMessageDoc.maxResponseTimeLas1000Messages("")}</span>
+      }      
+      
+      def minResponseTimeLas1000Messages():NodeSeq = {
+        <span>{APIStatsMessageDoc.minResponseTimeLas1000Messages("")}</span>
+      }
     
     }
   }

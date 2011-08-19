@@ -51,7 +51,14 @@ table#summaryTable {
 
 .firstColumn {
 	text-align: justify;
+	font-weight: bold;
 }
+
+.titleColumn {
+	font-size: larger;
+	font-weight: bold;
+}
+
 
 .normalColumn {
 	text-align: center;

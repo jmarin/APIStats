@@ -2,23 +2,6 @@
 <html>
 <body class="lift:content_id=main">
 	<div id="main" class="lift:surround?with=default;at=content">
-		<div id="dateSummarySelector" class="ui-buttonset">
-			<input name="dateR" id="r1" type="radio" value="day"
-				checked="checked" class="ui-helper-hidden-accessible" /><label
-				for="dateR"><span
-				class="ui-button ui-button-text-only ui-widget ui-state-default ui-corner-all selected ui-state-hover">DAY</span>
-			</label> <input name="dateR" id="r2" type="radio" value="week"
-				class="ui-helper-hidden-accessible" /><label for="dateR"
-				class="ui-button ui-button-text-only ui-widget ui-state-default ui-corner-all"><span>WEEK</span>
-			</label> <input name="dateR" type="radio" value="month"
-				class="ui-helper-hidden-accessible" /><label for="dateR"
-				class="ui-button ui-button-text-only ui-widget ui-state-default ui-corner-all"><span>MONTH</span>
-			</label> <input name="dateR" type="radio" value="year"
-				class="ui-helper-hidden-accessible" /><label for="dateR"
-				class="ui-button ui-button-text-only ui-widget ui-state-default ui-corner-all"><span>YEAR</span>
-			</label>
-		</div>
-		<br />
 		<div id="apiAnalyticsContainer" class="ui-widget-header">API
 			Analytics</div>
 		<br />
@@ -26,13 +9,13 @@
 			<table cellspacing="2" cellpadding="0" id="summaryTable">
 				<tbody>
 					<tr>
-						<td>Name</td>
-						<td>Total API Calls</td>
-						<td>% Geospatial</td>
-						<td>% Failed</td>
-						<td>Average Response Time (ms)</td>
-						<td>Max. Response Time (ms)</td>
-						<td>Min. Response Time (ms)</td>
+						<td class="firstColumn titleColumn">Name</td>
+						<td class="titleColumn">Total API Calls</td>
+						<td class="titleColumn">% Geospatial</td>
+						<td class="titleColumn">% Failed</td>
+						<td class="titleColumn">Avg. Response Time ms (*)</td>
+						<td class="titleColumn">Max. Response Time ms (*)</td>
+						<td class="titleColumn">Min. Response Time ms (*)</td>
 					</tr>
 					<tr>
 						<td class="firstColumn"><a href="http://www.broadbandmap.gov">National
@@ -44,22 +27,51 @@
 						</td>
 						<td class="normalColumn"><span class="lift:InitStats.percentageFailed"></span>
 						</td>
+						<td class="normalColumn"><span class="lift:InitStats.avgResponseTimeLas1000Messages"></span></td>
+						<td class="normalColumn"><span class="lift:InitStats.maxResponseTimeLas1000Messages"></span></td>
+						<td class="normalColumn"><span class="lift:InitStats.minResponseTimeLas1000Messages"></span></td>
+						
 					</tr>
 					<tr>
 						<td class="firstColumn"><a href="">FCC Consumer Broadband Test</a></td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
 					</tr>
 					<tr>
 						<td class="firstColumn"><a href="">FCC Census Block Conversions</a></td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
 					</tr>
 					<tr>
 						<td class="firstColumn"><a href="">Spectrum Dashboard</a></td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
 					</tr>
 					<tr>
 						<td class="firstColumn"><a href="">FCC License View</a></td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
+						<td class="normalColumn">n/a</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+		<div style="text-align: center;">(*)Computed for the last 1000 messages</div>
 		<br />
 		
 		<div id="mainMap"></div>
