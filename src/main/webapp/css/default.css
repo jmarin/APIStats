@@ -1,35 +1,67 @@
 @CHARSET "UTF-8";
 
 body {
-	font-family:Arial;	
+	font-family: Courier;
+	font-size: 12px;
 }
 
-#header {
-	width:100%;
-	background-color: #FFF;
+.selected {
+	font-weight: bold;
 }
 
-li {
-	display: inline;
-	list-style-type:none;
-	padding-right:13px;
-	position:absolute;
-	font-size:12px;
+#headerContainer {
+	width: 100%;
+	heigth: 100%;
+	background-color: #ccc8c8;
 }
 
-
-#rightNavList li {
-	right:100px;
-}
-
-#leftNavContainer {
-	background-color:#FFF000
-	left:10px;
+#rightHeaderContainer {
+	right: 10px;
 }
 
 #leftNavList li {
-	left:100px;
+	display: inline;
+	padding-right: 20px;
+	padding-left: 10px;
 }
 
+div#footerNav {
+	text-align: center;
+	border-top-width: 1px;
+	border-top-style: dotted;
+	border-top-color: #B5B5B5;
+}
 
+div#date {
+	text-align: left;
+}
 
+#dateSummarySelector li {
+	text-align: left;
+}
+
+div#apiAnalyticsContainer {
+	background-color: #ccc8c8;
+}
+
+table#summaryTable {
+	text-align: center;
+	width: 100%;
+}
+
+.firstColumn {
+	text-align: justify;
+}
+
+.normalColumn {
+	text-align: center;
+}
+
+div#mainMap {
+	text-align: center;
+	background-color: silver;
+	width: 90%;
+	height: 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
