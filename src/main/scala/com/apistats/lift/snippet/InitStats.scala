@@ -9,31 +9,31 @@ package com.apistats.lift {
     import org.joda.time.DateTime
 
     object InitStats {
-      
-      def totalCount():NodeSeq = {
-        <strong>{APIStatsMessageDoc.numberOfTotalMessages}</strong>
+
+      def totalCount(): NodeSeq = {
+        <strong>{ APIStatsMessageDoc.numberOfTotalMessages }</strong>
       }
-      
-      def percentageGeospatial():NodeSeq = {
-        <span>{APIStatsMessageDoc.percentageGeospatialMessages}</span>
+
+      def percentageGeospatial(): NodeSeq = {
+        <span>{ APIStatsMessageDoc.percentageGeospatialMessages }</span>
       }
-      
-      def percentageFailed():NodeSeq = {
-        <span>{APIStatsMessageDoc.percentageFailed}</span>
+
+      def percentageFailed(): NodeSeq = {
+        <span>{ APIStatsMessageDoc.percentageFailed }</span>
       }
-      
-      def avgResponseTimeLas1000Messages():NodeSeq = {
-        <span>{APIStatsMessageDoc.avgResponseTimeLas1000Messages("")}</span>
+
+      def avgResponseTimeLas100Messages(): NodeSeq = {
+        <span>{ APIStatsMessageDoc.avgResponseTimeLast100Messages("") }</span>
       }
-      
-      def maxResponseTimeLas1000Messages():NodeSeq = {
-        <span>{APIStatsMessageDoc.maxResponseTimeLas1000Messages("")}</span>
-      }      
-      
-      def minResponseTimeLas1000Messages():NodeSeq = {
-        <span>{APIStatsMessageDoc.minResponseTimeLas1000Messages("")}</span>
+
+      def maxResponseTimeLas100Messages(): NodeSeq = {
+        <span>{ APIStatsMessageDoc.maxResponseTimeLast100Messages("") }</span>
       }
-    
+
+      def minResponseTimeLas100Messages(): NodeSeq = {
+        <span>{ APIStatsMessageDoc.minResponseTimeLast100Messages("") }</span>
+      }
+
     }
   }
 }

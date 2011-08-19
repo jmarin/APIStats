@@ -71,9 +71,9 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
       assert(APIStatsMessageDoc.percentageFailedByAPIName("foo").toString === "66.667")
     }
     "check the average, max and min response time in API foo" in {
-      assert(APIStatsMessageDoc.avgResponseTimeLas1000Messages("foo") === 158.333)
-      assert(APIStatsMessageDoc.maxResponseTimeLas1000Messages("foo") === 200.000)
-      assert(APIStatsMessageDoc.minResponseTimeLas1000Messages("foo") === 100.000)
+      assert(APIStatsMessageDoc.avgResponseTimeLast100Messages("foo") === 158.333)
+      assert(APIStatsMessageDoc.maxResponseTimeLast100Messages("foo") === 200.000)
+      assert(APIStatsMessageDoc.minResponseTimeLast100Messages("foo") === 100.000)
     }
     "be deleted from MongoDB" in {
       val query = QueryBuilder.start("apiName").is("Test").get
