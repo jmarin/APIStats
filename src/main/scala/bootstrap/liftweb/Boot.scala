@@ -3,11 +3,11 @@ package bootstrap.liftweb
 import net.liftweb._
 import util._
 import Helpers._
-
 import common._
 import http._
 import sitemap._
 import Loc._
+import net.liftweb.http.js.jquery.JQuery14Artifacts
 
 /**
  * A class that's instantiated early and run. It allows the application
@@ -19,7 +19,8 @@ class Boot {
     LiftRules.addToPackages("com.apistats.lift")
 
     // Build SiteMap
-    val entries = List(Menu.i("Home") / "index", // the simple way to declare a menu
+    val entries = List(Menu.i("Home") / "index", 
+    		Menu("Detail") / "detail",
 
       // more complex because this menu allows anything in the
       // /static path to be visible
@@ -46,6 +47,9 @@ class Boot {
     
     //Disable servive as XHTML
     LiftRules.useXhtmlMimeType = false
+    
+    //Configure which Javascript framework to use
+    LiftRules.jsArtifacts = JQuery14Artifacts
     
     //Startup MongoDB configuration
     MongoConfig.init    
