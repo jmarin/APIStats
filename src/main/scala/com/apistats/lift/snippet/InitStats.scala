@@ -22,15 +22,15 @@ package com.apistats.lift {
         <span>{ APIStatsMessageDoc.percentageFailed }</span>
       }
 
-      def avgResponseTimeLas100Messages(): NodeSeq = {
+      def avgResponseTimeLast100Messages(): NodeSeq = {
         <span>{ APIStatsMessageDoc.avgResponseTimeLast100Messages("") }</span>
       }
 
-      def maxResponseTimeLas100Messages(): NodeSeq = {
+      def maxResponseTimeLast100Messages(): NodeSeq = {
         <span>{ APIStatsMessageDoc.maxResponseTimeLast100Messages("") }</span>
       }
 
-      def minResponseTimeLas100Messages(): NodeSeq = {
+      def minResponseTimeLast100Messages(): NodeSeq = {
         <span>{ APIStatsMessageDoc.minResponseTimeLast100Messages("") }</span>
       }
 

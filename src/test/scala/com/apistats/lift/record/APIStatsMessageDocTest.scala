@@ -75,6 +75,7 @@ class APIStatsMessageDocTest extends WordSpec with BeforeAndAfterAll with Should
       assert(APIStatsMessageDoc.maxResponseTimeLast100Messages("foo") === 200.000)
       assert(APIStatsMessageDoc.minResponseTimeLast100Messages("foo") === 100.000)
     }
+    
     "be deleted from MongoDB" in {
       val query = QueryBuilder.start("apiName").is("Test").get
       val messageDocIterator = APIStatsMessageDoc.find(query)
