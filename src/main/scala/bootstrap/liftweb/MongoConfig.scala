@@ -15,10 +15,12 @@ object MongoConfig extends Loggable {
     val mongoserver:String = Props.get("mongoserver") openOr("")
     val mongoport:Int = (Props.get("mongoport") openOr ("")).toInt
     val server = new ServerAddress(mongoserver, mongoport)
+    val mongouser:String = (Props.get("mongouser") openOr (""))
+    val mongopassword:String = (Props.get("mongopassword") openOr(""))
     val mongoOptions = new MongoOptions
     mongoOptions.socketTimeout = 30000
 
-    MongoDB.defineDb(DefaultMongoIdentifier, new Mongo(server, mongoOptions), "gisdb")
+    MongoDB.defineDbAuth(DefaultMongoIdentifier, new Mongo(server, mongoOptions), "gisdb", mongouser, mongopassword)
     logger.info("MongoDB initialized on server " + mongoserver + " running on port " + mongoport)
   }
 
