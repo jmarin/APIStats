@@ -1,4 +1,4 @@
 mongoserver=127.0.0.1
-mongoport=8432
+mongoport=8234
 mongouser=bbmap
 mongopassword=bbmap_ps
