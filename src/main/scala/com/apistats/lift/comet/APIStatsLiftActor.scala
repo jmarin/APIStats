@@ -16,7 +16,6 @@ object APIStatsLiftActor extends LiftActor with ListenerManager {
     case msg: APIStatsMessage => {
       APIStatsMessageDoc.saveMessage(msg)
       apiMessagesCount = APIStatsMessageDoc.numberOfTotalMessages
-      println("API called: " + msg.apiName)
       updateListeners()
     }
   }
