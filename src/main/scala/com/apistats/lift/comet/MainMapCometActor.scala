@@ -14,8 +14,8 @@ class MainMapCometActor extends CometActor with CometListener {
   private var message:APIStatsMessage = null
   
   def render = {
-    bind("latitude", <span><b>{message.queryParams("latitude")}</b></span>)
-    bind("longitude", <span><b>Longitude:{message.queryParams("longitude")}</b></span>)
+    "#latitude *" #> <span><b>{if (message != null) message.queryParams("latitude")}</b></span>
+    "#longitude *" #> <span><b>{if (message != null) message.queryParams("longitude")}</b></span>
   }
   
   def registerWith = MainMapLiftActor
