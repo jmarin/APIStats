@@ -19,11 +19,11 @@ class MongoConfigTest extends WordSpec with BeforeAndAfterAll with ShouldMatcher
   "Mongo configuration" should {
     val mongoport = Props.get("mongoport") openOr ("")
     val mongoserver = Props.get("mongoserver") openOr("")
-    "use the default port for connection" in {
+    "use the configured port for connection" in {
       assert(mongoport === "8234")
 
     }
-    "use the localhost server" in {
+    "use the configured server" in {
       assert(mongoserver === "127.0.0.1")
     }
   }

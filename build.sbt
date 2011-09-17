@@ -6,9 +6,11 @@ scalaVersion := "2.9.0-1"
 
 scalacOptions += "-deprecation"
 
-resolvers += "scala build tools snapshot repo" at "http://scala-tools.org/repo-snapshots"
+resolvers += ScalaToolsReleases
 
 resolvers += "download.java.net maven2" at "http://download.java.net/maven/2" 
+
+resolvers += "GuicyFruit Release Repository" at "http://guiceyfruit.googlecode.com/svn/repo/releases"
 
 checksums := Nil
 
@@ -17,7 +19,7 @@ checksums := Nil
 seq(WebPlugin.webSettings: _*)
 
 libraryDependencies ++= {
-	val liftVersion = "2.4-M3"
+	val liftVersion = "2.4-M4"
 	Seq(
     	"net.liftweb" %% "lift-webkit" % liftVersion % "compile->default",
     	"net.liftweb" %% "lift-mapper" % liftVersion % "compile->default",
@@ -51,11 +53,9 @@ libraryDependencies ++= {
 
 libraryDependencies += "apistatsmodel" % "apistatsmodel_2.9.0-1" % "1.1"
 
-
 libraryDependencies += "org.scalatest" % "scalatest_2.9.0" % "1.6.1" % "test"
 
 libraryDependencies += "joda-time" % "joda-time" % "1.6.2"
 
-libraryDependencies += "com.foursquare" %% "rogue" % "1.0.15"
-
+libraryDependencies += "com.foursquare" %% "rogue" % "1.0.23"
 
