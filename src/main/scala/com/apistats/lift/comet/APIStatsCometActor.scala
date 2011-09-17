@@ -13,9 +13,12 @@ class APIStatsCometActor extends CometActor with CometListener {
   def registerWith = APIStatsLiftActor
 
   override def lowPriority = {
-    case count: Long => apiMessagesCount = count; reRender()
+    case count: Long => {
+      apiMessagesCount = count
+      reRender()
+    }
   }
 
-  def render = "#apicount *" #> <span><strong>{apiMessagesCount}</strong></span>
+  def render = "#apicount *" #> <span><strong>{ apiMessagesCount }</strong></span>
 
 }

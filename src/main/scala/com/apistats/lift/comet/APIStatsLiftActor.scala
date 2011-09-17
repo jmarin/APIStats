@@ -6,8 +6,6 @@ import com.apistats.lift.record.APIStatsMessageDoc
 
 object APIStatsLiftActor extends LiftActor with ListenerManager {
 
-  private var msgs = Vector("Welcome")
-
   private var apiMessagesCount: Long = 0
 
   def createUpdate = apiMessagesCount

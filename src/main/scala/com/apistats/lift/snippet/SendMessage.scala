@@ -39,7 +39,6 @@ object SendMessage {
 
     val statsActor = remote.actorFor( "apistats-actor", "localhost", 2552 )
     statsActor ! message
-    //APIStatsLiftActor ! s
     SetValById( "chat_in", "" )
   } )
 
