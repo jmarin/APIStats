@@ -2,7 +2,7 @@ var vectorLayer;
 var features = []
 $(document).ready(
 		function() {
-			OpenLayers.ImgPath = "/img/openlayers/dark/";
+			OpenLayers.ImgPath = "../../img/openlayers/dark/";
 			var mapOptions = {
 				resolutions : [ 156543.03390625, 78271.516953125,
 						39135.7584765625, 19567.87923828125, 9783.939619140625,
