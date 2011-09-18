@@ -11,7 +11,6 @@ object MainMapLiftActor extends LiftActor with ListenerManager {
   
   override def lowPriority = {
     case msg:APIStatsMessage => {
-      println("APIStatsMessage received by " + this.toString())
       message = msg
       updateListeners()
     }

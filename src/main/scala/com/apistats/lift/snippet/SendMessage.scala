@@ -30,16 +30,26 @@ object SendMessage {
    * to the ChatServer and then returns JavaScript which
    * clears the input.
    */
-  def render = SHtml.onSubmit( s => {
+  def render = SHtml.onSubmit(s => {
 
+    val message1 = new APIStatsMessage("xxx", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=43.456&longitude=-77.987&format=json", LinkedHashMap("geographyType" -> "block"),
+      LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 3, true, "", false)
 
-    val message = new APIStatsMessage( "xxx", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=42.456&longitude=-74.987&format=json", LinkedHashMap( "geographyType" -> "block" ),
-      LinkedHashMap( "latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json" ), new DateTime(), 3, true, "", false )
+    val message2 = new APIStatsMessage("xxx", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=42.456&longitude=-74.987&format=json", LinkedHashMap("geographyType" -> "block"),
+      LinkedHashMap("latitude" -> "45.456", "longitude" -> "-94.987", "format" -> "json"), new DateTime(), 3, true, "", false)
 
+    val message3 = new APIStatsMessage("xxx", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=42.456&longitude=-74.987&format=json", LinkedHashMap("geographyType" -> "block"),
+      LinkedHashMap("latitude" -> "38.456", "longitude" -> "-84.987", "format" -> "json"), new DateTime(), 3, true, "", false)
 
-    val statsActor = remote.actorFor( "apistats-actor", "localhost", 2552 )
-    statsActor ! message
-    SetValById( "chat_in", "" )
-  } )
+    val message4 = new APIStatsMessage("xxx", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=42.456&longitude=-74.987&format=json", LinkedHashMap("geographyType" -> "block"),
+      LinkedHashMap("latitude" -> "39.456", "longitude" -> "-101.987", "format" -> "json"), new DateTime(), 3, true, "", false)
+
+    val statsActor = remote.actorFor("apistats-actor", "localhost", 2552)
+    statsActor ! message1
+    statsActor ! message2
+    statsActor ! message3
+    statsActor ! message4
+    SetValById("chat_in", "")
+  })
 
 }
