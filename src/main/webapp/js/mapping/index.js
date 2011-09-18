@@ -78,9 +78,6 @@ function updateMap(message) {
 	if (features.length > 100) {
 		var lastFeature = features[features.length -1]
 		vectorLayer.removeFeatures(lastFeature);
-		//console.log("removed point");
 	}
 	vectorLayer.addFeatures(feature);
-
-	//alert(msg.apiName, msg.responseTime);
 }
