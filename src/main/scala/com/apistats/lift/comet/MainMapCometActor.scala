@@ -23,10 +23,12 @@ class MainMapCometActor extends CometActor with CometListener {
 
   override def lowPriority = {
     case message: APIStatsMessage => {
-      val queryParams = message.queryParams
-      val latitude = queryParams("latitude")
-      val longitude = queryParams("longitude")
-      partialUpdate(callEventHandler(message))
+      if (message.isGeospatial) {
+        val queryParams = message.queryParams
+        val latitude = queryParams("latitude")
+        val longitude = queryParams("longitude")
+        partialUpdate(callEventHandler(message))
+      }
     }
     case _ => println("****Other type of message****")
   }
