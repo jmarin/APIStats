@@ -6,7 +6,7 @@ import com.apistatsmodel.messages.APIStatsMessage
 import org.joda.time.DateTime
 import scala.collection.mutable.LinkedHashMap
 
-object StressTest extends Application {
+object StressTest extends App {
 
   println("Stress testing APIStats")
   
