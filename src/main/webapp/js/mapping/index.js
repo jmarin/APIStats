@@ -76,7 +76,7 @@ function updateMap(message) {
 	});
 	var features = vectorLayer.features;
 	if (features.length > 100) {
-		var lastFeature = features[features.length -1]
+		var lastFeature = features[0]
 		vectorLayer.removeFeatures(lastFeature);
 	}
 	vectorLayer.addFeatures(feature);
