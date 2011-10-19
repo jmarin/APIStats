@@ -2,7 +2,7 @@ var vectorLayer;
 var features = []
 $(document).ready(
 		function() {
-			OpenLayers.ImgPath = "/img/openlayers/dark/";
+			OpenLayers.ImgPath = "http://" + window.location.hostname + "/apistats/img/openlayers/dark/";
 			var mapOptions = {
 				resolutions : [ 156543.03390625, 78271.516953125,
 						39135.7584765625, 19567.87923828125, 9783.939619140625,
@@ -76,7 +76,7 @@ function updateMap(message) {
 	});
 	var features = vectorLayer.features;
 	if (features.length > 100) {
-		var lastFeature = features[features.length -1]
+		var lastFeature = features[0]
 		vectorLayer.removeFeatures(lastFeature);
 	}
 	vectorLayer.addFeatures(feature);
