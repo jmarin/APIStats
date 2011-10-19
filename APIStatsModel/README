@@ -1,0 +1,6 @@
+July 2011
+
+Message model for APIStats
+
+Run sbt eclipse to create Eclipse compatible project. 
+Run sbt publish to create a Maven artifact in the local repository

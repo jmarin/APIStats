@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<lift:surround with="default" at="content">
+	<body>
+		<div id="main">
+			<div id="apiAnalyticsContainer" class="ui-widget-header">API
+				Analytics</div>
+			<br />
+			<div class="lift:comet?type=APIStatsCometActor">
+				<table cellspacing="2" cellpadding="0" id="summaryTable">
+					<tbody>
+						<tr>
+							<td class="firstColumn titleColumn">Name</td>
+							<td class="titleColumn">Total API Calls</td>
+							<td class="titleColumn">Geospatial (%)</td>
+							<td class="titleColumn">Failed (%)</td>
+							<td class="titleColumn">Avg. Response Time ms (*)</td>
+							<td class="titleColumn">Max. Response Time ms (*)</td>
+							<td class="titleColumn">Min. Response Time ms (*)</td>
+						</tr>
+						<tr>
+							<td class="firstColumn"><a
+								href="http://www.broadbandmap.gov">National Broadband Map</a></td>
+							<td class="normalColumn"><span
+								class="lift:InitStats.totalCount"></span></td>
+							<td class="normalColumn"><span
+								class="lift:InitStats.percentageGeospatial"></span></td>
+							<td class="normalColumn"><span
+								class="lift:InitStats.percentageFailed"></span></td>
+							<td class="normalColumn"><span
+								class="lift:InitStats.avgResponseTimeLast100Messages"></span></td>
+							<td class="normalColumn"><span
+								class="lift:InitStats.maxResponseTimeLast100Messages"></span></td>
+							<td class="normalColumn"><span
+								class="lift:InitStats.minResponseTimeLast100Messages"></span></td>
+							<!-- <td class="normalColumn"><span class="lift:InitStats.avgResponseTimeLas100Messages"></span></td>
+						<td class="normalColumn"><span class="lift:InitStats.maxResponseTimeLas100Messages"></span></td>
+						<td class="normalColumn"><span class="lift:InitStats.minResponseTimeLas100Messages"></span></td> -->
+
+						</tr>
+						<tr>
+							<td class="firstColumn"><a href="">FCC Consumer
+									Broadband Test</a>
+							</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+						</tr>
+						<tr>
+							<td class="firstColumn"><a href="">FCC Census Block
+									Conversions</a>
+							</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+						</tr>
+						<tr>
+							<td class="firstColumn"><a href="">Spectrum Dashboard</a>
+							</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+						</tr>
+						<tr>
+							<td class="firstColumn"><a href="">FCC License View</a>
+							</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+							<td class="normalColumn">n/a</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="text-align: center;">(*)Computed for the last 100
+				API calls</div>
+			<br />
+
+			<div id="mainMap"></div>
+
+			<div
+				style="text-align: center; margin-left: auto; margin-right: auto;">
+				<form class="lift:form.ajax">
+					<input type="hidden" class="lift:SendMessage" id="chat_in" /> <input
+						type="submit" value="Test Message" />
+				</form>
+				<div class="lift:comet?type=MainMapCometActor">
+					<input id="latitude" type="text" />
+					<input id="longitude" type="text"/>
+				</div>
+			</div>
+		</div>
+		<div id="tail" class="lift:tail">
+			<script src="/js/mapping/openlayers/OpenLayers.js"
+				type="text/javascript"></script>
+			<script src="/js/mapping/cloudmade.js" type="text/javascript"></script>
+			<script src="/js/mapping/index.js" type="text/javascript"></script>
+		</div>
+	</body>
+</lift:surround>
+
+</html>
+
