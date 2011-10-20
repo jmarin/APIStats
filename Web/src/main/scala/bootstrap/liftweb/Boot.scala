@@ -15,12 +15,16 @@ import net.liftweb.http.js.jquery.JQuery14Artifacts
  */
 class Boot {
   def boot {
+
+    //Run Mode
+    System.setProperty("run.mode", "production")
+
     // where to search snippet
     LiftRules.addToPackages("com.apistats.lift")
 
     // Build SiteMap
-    val entries = List(Menu.i("Home") / "index", 
-    		Menu("Detail") / "detail",
+    val entries = List(Menu.i("Home") / "index",
+      Menu("Detail") / "detail",
 
       // more complex because this menu allows anything in the
       // /static path to be visible
@@ -41,18 +45,18 @@ class Boot {
 
     // Force the request to be UTF-8
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
-    
+
     //Output HTML5 instead of XHTML
-    LiftRules.htmlProperties.default.set((r:Req)=>new Html5Properties(r.userAgent))
-    
+    LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
+
     //Disable servive as XHTML
     LiftRules.useXhtmlMimeType = false
-    
+
     //Configure which Javascript framework to use
     LiftRules.jsArtifacts = JQuery14Artifacts
-    
+
     //Startup MongoDB configuration
-    MongoConfig.init    
+    MongoConfig.init
 
   }
 }
