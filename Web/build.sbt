@@ -19,7 +19,7 @@ checksums := Nil
 
 //If running with JRebel, avoid unnecessary redeploys
 
-//scanDirectories := Nil 
+scanDirectories in Compile := Nil
 
 //Lift dependencies
 
@@ -37,7 +37,7 @@ libraryDependencies ++= {
 
 libraryDependencies ++= Seq(
   "junit" % "junit" % "4.8.1" % "test->default",
-  "org.eclipse.jetty" % "jetty-webapp" % "7.3.0.v20110203" % "container",
+  "org.eclipse.jetty" % "jetty-webapp" % "8.0.3.v20111011" % "container",
   "javax.servlet" % "servlet-api" % "2.5" % "provided->default",
   "com.h2database" % "h2" % "1.2.138",
   "ch.qos.logback" % "logback-classic" % "0.9.26" % "compile->default"
