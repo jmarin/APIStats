@@ -27,7 +27,7 @@ $(document).ready(
 			// Cloudmade base map
 			var cloudmade = new OpenLayers.Layer.CloudMade("CloudMade", {
 				key : '76e5147f19c4497d94751708a16d4590',
-				styleId : 43327
+				styleId : 1
 			});
 
 			map = new OpenLayers.Map('mainMap', mapOptions);

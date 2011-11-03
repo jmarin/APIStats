@@ -42,7 +42,7 @@ object SendMessage {
       LinkedHashMap("latitude" -> "38.456", "longitude" -> "-84.987", "format" -> "json"), new DateTime(), 3, true, "", false)
 
     val message4 = new APIStatsMessage("xxx", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=42.456&longitude=-74.987&format=json", LinkedHashMap("geographyType" -> "block"),
-      LinkedHashMap("latitude" -> "39.456", "longitude" -> "-101.987", "format" -> "json"), new DateTime(), 3, true, "", false)
+      LinkedHashMap("latitude" -> "39.456", "longitude" -> "-101.987", "format" -> "json"), new DateTime(), 3, false, "", false)
 
     val statsActor = remote.actorFor("apistats-actor", "localhost", 2552)
     statsActor ! message1

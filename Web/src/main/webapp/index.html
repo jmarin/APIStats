@@ -6,7 +6,7 @@
 			<div id="apiAnalyticsContainer" class="ui-widget-header">API
 				Analytics</div>
 			<br />
-			<div class="lift:comet?type=APIStatsCometActor">
+			<div>
 				<table cellspacing="2" cellpadding="0" id="summaryTable">
 					<tbody>
 						<tr>
@@ -21,27 +21,16 @@
 						<tr>
 							<td class="firstColumn"><a
 								href="http://www.broadbandmap.gov">National Broadband Map</a></td>
-							<td class="normalColumn"><span
-								class="lift:InitStats.totalCount"></span></td>
-							<td class="normalColumn"><span
-								class="lift:InitStats.percentageGeospatial"></span></td>
-							<td class="normalColumn"><span
-								class="lift:InitStats.percentageFailed"></span></td>
-							<td class="normalColumn"><span
-								class="lift:InitStats.avgResponseTimeLast100Messages"></span></td>
-							<td class="normalColumn"><span
-								class="lift:InitStats.maxResponseTimeLast100Messages"></span></td>
-							<td class="normalColumn"><span
-								class="lift:InitStats.minResponseTimeLast100Messages"></span></td>
-							<!-- <td class="normalColumn"><span class="lift:InitStats.avgResponseTimeLas100Messages"></span></td>
-						<td class="normalColumn"><span class="lift:InitStats.maxResponseTimeLas100Messages"></span></td>
-						<td class="normalColumn"><span class="lift:InitStats.minResponseTimeLas100Messages"></span></td> -->
-
+							<td class="normalColumn"><span id="apicount" class="lift:comet?type=APICountCometActor"></span></td>
+							<td class="normalColumn"><span id="geospatialPercentage" class="lift:comet?type=APIGeospatialCometActor"></span></td>
+							<td class="normalColumn"><span id="failedPercentage"></span></td>
+							<td class="normalColumn"><span id="avgResponseTime"></span></td>
+							<td class="normalColumn"><span id="maxResponseTime"></span></td>
+							<td class="normalColumn"><span id="minResponseTime"></span></td>
 						</tr>
 						<tr>
 							<td class="firstColumn"><a href="">FCC Consumer
-									Broadband Test</a>
-							</td>
+									Broadband Test</a></td>
 							<td class="normalColumn">n/a</td>
 							<td class="normalColumn">n/a</td>
 							<td class="normalColumn">n/a</td>
@@ -51,8 +40,7 @@
 						</tr>
 						<tr>
 							<td class="firstColumn"><a href="">FCC Census Block
-									Conversions</a>
-							</td>
+									Conversions</a></td>
 							<td class="normalColumn">n/a</td>
 							<td class="normalColumn">n/a</td>
 							<td class="normalColumn">n/a</td>
@@ -61,8 +49,7 @@
 							<td class="normalColumn">n/a</td>
 						</tr>
 						<tr>
-							<td class="firstColumn"><a href="">Spectrum Dashboard</a>
-							</td>
+							<td class="firstColumn"><a href="">Spectrum Dashboard</a></td>
 							<td class="normalColumn">n/a</td>
 							<td class="normalColumn">n/a</td>
 							<td class="normalColumn">n/a</td>
@@ -71,8 +58,7 @@
 							<td class="normalColumn">n/a</td>
 						</tr>
 						<tr>
-							<td class="firstColumn"><a href="">FCC License View</a>
-							</td>
+							<td class="firstColumn"><a href="">FCC License View</a></td>
 							<td class="normalColumn">n/a</td>
 							<td class="normalColumn">n/a</td>
 							<td class="normalColumn">n/a</td>
@@ -96,8 +82,8 @@
 						type="submit" value="Test Message" />
 				</form>
 				<div class="lift:comet?type=MainMapCometActor">
-					<input id="latitude" type="text" />
-					<input id="longitude" type="text"/>
+					<input id="latitude" type="text" /> <input id="longitude"
+						type="text" />
 				</div>
 			</div>
 		</div>

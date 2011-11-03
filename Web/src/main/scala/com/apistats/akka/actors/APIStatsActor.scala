@@ -17,7 +17,8 @@ class APIStatsActor extends Actor {
 
   def receive = {
     case msg: APIStatsMessage => {
-      APIStatsLiftActor ! msg
+      APICountLiftActor ! msg
+      APIGeospatialLiftActor ! msg
       MainMapLiftActor ! msg
     }
     case _ => self reply ("Test OK")
