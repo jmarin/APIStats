@@ -28,8 +28,7 @@ object APIGeospatialLiftActor extends LiftActor with ListenerManager with Number
   
   private def calculatePercentage = {
     if (totalGeospatialMessages > 0){
-      val perc = (totalGeospatialMessages / totalMessages) * 100
-      println(perc)
+      val perc:Double = (totalGeospatialMessages.toDouble / totalMessages.toDouble) * 100
       formatPercentage(perc)
     }else {
       0.0
