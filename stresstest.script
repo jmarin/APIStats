@@ -11,14 +11,25 @@ for (i <- 1 to 10000) {
  val longitudeRange = -125 to -70
  val latitudeRange = 24 to 47
  val responseTimeRange = 3 to 800
+ val isFailedNumArray = 0 to 1
  val longitude = longitudeRange(rnd.nextInt(longitudeRange length))
  val latitude = latitudeRange(rnd.nextInt(latitudeRange length))
  val responseTime = responseTimeRange(rnd.nextInt(responseTimeRange length))
- val message = new APIStatsMessage("stress", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=" + latitude + "&longitude= " + longitude + "&format=json", LinkedHashMap("geographyType" -> "block"),
-          LinkedHashMap("latitude" -> latitude.toString, "longitude" -> longitude.toString, "format" -> "json"), new DateTime(), responseTime, true, "", false)
+ val isFailedNumber = isFailedNumArray(rnd.nextInt(isFailedNumArray length))
+ println(isFailedNumber)
+ val isFailed = {
+   if (isFailedNumber == 0){
+     true
+   }else {
+     false
+   }
+ }
 
-val message2 = new APIStatsMessage("stress", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=" + latitude + "&longitude= " + longitude + "&format=json", LinkedHashMap("geographyType" -> "block"),
-          LinkedHashMap("latitude" -> latitude.toString, "longitude" -> longitude.toString, "format" -> "json"), new DateTime(), responseTime, false, "", false)
+ val message = new APIStatsMessage("stress", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=" + latitude + "&longitude= " + longitude + "&format=json", LinkedHashMap("geographyType" -> "block"),
+          LinkedHashMap("latitude" -> latitude.toString, "longitude" -> longitude.toString, "format" -> "json"), new DateTime(), responseTime, true, "", isFailed)
+
+ val message2 = new APIStatsMessage("stress", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=" + latitude + "&longitude= " + longitude + "&format=json", LinkedHashMap("geographyType" -> "block"),
+          LinkedHashMap("latitude" -> latitude.toString, "longitude" -> longitude.toString, "format" -> "json"), new DateTime(), responseTime, false, "", isFailed)
 
  val statsActor = remote.actorFor("apistats-actor", "localhost", 2552)
  println("Sending message #" + i)
@@ -26,5 +37,6 @@ val message2 = new APIStatsMessage("stress", "broadbandmap", "www.broadbandmap.g
  statsActor ! message
  statsActor ! message2
 }
+
 
 

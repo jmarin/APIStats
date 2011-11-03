@@ -20,6 +20,7 @@ class APIStatsActor extends Actor {
       APICountLiftActor ! msg
       APIGeospatialLiftActor ! msg
       MainMapLiftActor ! msg
+      FailedPercentageLiftActor ! msg
     }
     case _ => self reply ("Test OK")
   }
