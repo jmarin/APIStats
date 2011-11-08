@@ -21,6 +21,9 @@ class APIStatsActor extends Actor {
       APIGeospatialLiftActor ! msg
       MainMapLiftActor ! msg
       FailedPercentageLiftActor ! msg
+      AvgResponseTimeLiftActor ! msg
+      MaxResponseTimeLiftActor ! msg
+      MinResponseTimeLiftActor ! msg
     }
     case _ => self reply ("Test OK")
   }

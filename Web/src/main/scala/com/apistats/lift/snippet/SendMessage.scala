@@ -33,13 +33,13 @@ object SendMessage {
   def render = SHtml.onSubmit(s => {
 
     val message1 = new APIStatsMessage("xxx", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=43.456&longitude=-77.987&format=json", LinkedHashMap("geographyType" -> "block"),
-      LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 3, true, "", false)
+      LinkedHashMap("latitude" -> "42.456", "longitude" -> "-74.987", "format" -> "json"), new DateTime(), 10, true, "", false)
 
     val message2 = new APIStatsMessage("xxx", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=42.456&longitude=-74.987&format=json", LinkedHashMap("geographyType" -> "block"),
-      LinkedHashMap("latitude" -> "45.456", "longitude" -> "-94.987", "format" -> "json"), new DateTime(), 3, true, "", false)
+      LinkedHashMap("latitude" -> "45.456", "longitude" -> "-94.987", "format" -> "json"), new DateTime(), 249, true, "", false)
 
     val message3 = new APIStatsMessage("xxx", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=42.456&longitude=-74.987&format=json", LinkedHashMap("geographyType" -> "block"),
-      LinkedHashMap("latitude" -> "38.456", "longitude" -> "-84.987", "format" -> "json"), new DateTime(), 3, true, "", false)
+      LinkedHashMap("latitude" -> "38.456", "longitude" -> "-84.987", "format" -> "json"), new DateTime(), 125, true, "", false)
 
     val message4 = new APIStatsMessage("xxx", "broadbandmap", "www.broadbandmap.gov/broadbandmap/broadband/spring2011/wireline?latitude=42.456&longitude=-74.987&format=json", LinkedHashMap("geographyType" -> "block"),
       LinkedHashMap("latitude" -> "39.456", "longitude" -> "-101.987", "format" -> "json"), new DateTime(), 3, false, "", true)
