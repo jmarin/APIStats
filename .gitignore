@@ -1,7 +1,0 @@
-.target/
-target/
-project/boot/
-project/target
-.classpath
-.project
-.scala_dependencies
