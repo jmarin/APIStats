@@ -1,0 +1,9 @@
+.target/
+target/
+project/boot/
+project/target
+logs/
+.classpath
+.project
+.scala_dependencies
+.ensime
