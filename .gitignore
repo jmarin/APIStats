@@ -7,3 +7,6 @@ logs/
 .project
 .scala_dependencies
 .ensime
+.cache
+.metadata/
+.settings/
