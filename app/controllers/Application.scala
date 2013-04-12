@@ -5,9 +5,9 @@ import play.api.mvc._
 
 object Application extends Controller {
 
-def login = Action {
-	Ok(views.html.login("APIStats - Log In"))
-}
+  def login = Action {
+    Ok(views.html.login("APIStats - Log In"))
+  }
 
   def index = Action {
     Redirect(routes.Application.home())
@@ -18,12 +18,11 @@ def login = Action {
   }
 
   def alerts = Action {
-  	Ok(views.html.alerts())  	
+    Ok(views.html.alerts())
   }
 
-
-def settings = Action {
-	Ok(views.html.settings())
-}
+  def settings = Action {
+    Ok(views.html.settings())
+  }
 
 }
