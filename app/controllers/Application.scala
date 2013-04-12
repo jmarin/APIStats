@@ -5,6 +5,10 @@ import play.api.mvc._
 
 object Application extends Controller {
 
+def login = Action {
+	Ok(views.html.login("APIStats - Log In"))
+}
+
   def index = Action {
     Redirect(routes.Application.home())
   }
