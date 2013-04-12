@@ -10,3 +10,7 @@ logs/
 .cache
 .metadata/
 .settings/
+*.sublime-project
+*.sublime-workspace
+bin/
+design/
