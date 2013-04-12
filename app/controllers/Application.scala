@@ -18,4 +18,8 @@ object Application extends Controller {
   }
 
 
+def settings = Action {
+	Ok(views.html.settings())
+}
+
 }
