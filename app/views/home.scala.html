@@ -1,8 +1,21 @@
 @main("APIStats - Home") {
 
-	<div class="container">
-    	<div class="row">
-        	<div class="span12">APIStats</div>
+	<div class="container-fluid">
+    	<div class="row-fluid">
+        	<div class="span4" style="position: relative;top: 40px;">
+        		<h1>35,456</h1> <h4>Requests</h4>
+        	</div>      	
     	</div>
+    	<br/>
+    	<br/>
+    	<div class="row-fluid"> 
+        	@barchart()
+        </div>
+        <br/>
+    	<br/>
+    	<div class="row-fluid">
+    		@svg()
+    	</div>
+    	
 	</div>
 }
