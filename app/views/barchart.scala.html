@@ -1,4 +1,4 @@
-@() 
+@(name: String) 
 
 <body>
   <script type="text/javascript">
@@ -9,7 +9,7 @@
     var h = 100;
     var barPadding = 1;
 
-    var svg = d3.select("#barchart")
+    var svg = d3.select('@name')
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h)           

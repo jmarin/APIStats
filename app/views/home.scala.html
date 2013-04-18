@@ -18,17 +18,19 @@
     <div class="row-fluid">
       <div class="span12">
 	<div class="span4">
-	  <h6>Response Time(ms)
-	    <div id="barchart"></div>
-	    @barchart()
+	  <h6>Response Time(ms)</h6>
+	    <div id="respTimeChart"></div>
+	    @barchart("#respTimeChart")
         </div>
 	<div class="span4">
-	  <h6>Response Size(kb)
-	    <!--<div id="barchart"></div>
-	    @barchart()-->
+	  <h6>Response Size(kb)</h6>
+	    <div id="respSizeChart"></div>
+	    @barchart("#respSizeChart")
         </div>
 	<div class="span4">
-	  Errors(%)
+	  <h6>Errors(%)</h6>
+	  <div id="errorChart"></div>
+	  @barchart("#errorChart")
         </div>
       </div>
     </div>
