@@ -1,53 +1,65 @@
 @main("APIStats - Home") {
-
   <div class="container-fluid">
     <div class="row-fluid">
     	<div class="span12">
-    		<div class="span8">
-				<div class="span4">
-	  				<span id="totalReqs"><h1>35,456</h1><h4>requests</h4></span>
-				</div>
+    		<div id="row-fluid">
+					<div class="btn-group">
+  						<button class="btn active">Minute</button>
+  						<button class="btn">Hour</button>
+  						<button class="btn">Day</button>
+  						<button class="btn">Month</button>
+					</div>
+			</div>	
+			<div id="row-fluid">
+    			<div class="span8">
+					<div class="span3">
+	  					<span id="totalReqs"><h1>35,456</h1><h4>requests</h4></span>
+					</div>
 
-			<div class="span8">
-	  			<h6>Requests</h6>	
-	  			<div id="reqAreaChart"></div>
+					<div class="span9">
+						<div id="row-fluid">
+	  						<h6>Requests</h6>	
+	  						<div id="reqChart"></div>
+	  							@reqchart("#reqChart")
+	  					</div>	
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="span4">
+			<div class="span4">	
 	 		<h6>Top 5 APIs</h6>
 	  		<div id="top5pie"></div>
 	  			@top5pie("#top5pie")
-			</div>
-      	</div>	
+		</div>
     </div>
 
     <div class="row-fluid">
-      <div class="span12">
-	<div class="span4">
-	  <h6>Response Time(ms)</h6>
-	    <div id="respTimeChart"></div>
-	    @barchart("#respTimeChart")
+      <div class="span12	">
+		<div class="span4">
+	  		<h6>Response Time (ms)</h6>
+	    	<div id="respTimeChart"></div>
+	    		@barchart("#respTimeChart")
         </div>
 	<div class="span4">
-	  <h6>Response Size(kb)</h6>
+	  <h6>Response Size (kb)</h6>
 	    <div id="respSizeChart"></div>
 	    @barchart("#respSizeChart")
         </div>
 	<div class="span4">
-	  <h6>Errors(%)</h6>
+	  <h6>Errors (%)</h6>
 	  <div id="errorChart"></div>
 	  @barchart("#errorChart")
         </div>
       </div>
     </div>
 
+    <br/>
 
     <div class="row-fluid">
-      <div class="span12 offset6">
-	Table
+      <div class="span12">
+		@apiTable()
       </div>
     </div>
 
 </div>
-
+</div>
 }
