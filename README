@@ -1,5 +1,7 @@
 APIStats
 
+[![Continuous Integration status](https://secure.travis-ci.org/travis-ci/travis-lint.png)](http://travis-ci.org/travis-ci/travis-lint)
+
 A RESTful API Analytics tool built with Lift & Akka
 
 To build, use SBT (Simple Build Tool) available at https://github.com/harrah/xsbt/wiki
