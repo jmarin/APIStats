@@ -1,0 +1,13 @@
+language: scala
+ scala:
+   - "2.10.0"
+   - "2.10.1"
+ notifications:
+   email:
+     recipients:
+      - juan.marin.otero@gmail.com
+ use_notice: true
+ jdk:
+   - oraclejdk7
+   - openjdk7
+   - openjdk6
