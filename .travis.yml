@@ -1,4 +1,7 @@
 language: scala # to trigger the build on JVM worker ('language: java' works the same)
+jdk:
+  - oraclejdk6
+  - openjdk7
 scala:
   - 2.10.0
 env:
