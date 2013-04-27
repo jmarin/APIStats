@@ -20,13 +20,13 @@ class ApplicationSpec extends Specification {
       }
     }
     
-    "render the index page" in {
+    "render the home page" in {
       running(FakeApplication()) {
-        val home = route(FakeRequest(GET, "/")).get
+        val home = route(FakeRequest(GET, "/home")).get
         
         status(home) must equalTo(OK)
         contentType(home) must beSome.which(_ == "text/html")
-        contentAsString(home) must contain ("Your new application is ready.")
+        contentAsString(home) must contain ("Requests")
       }
     }
   }
