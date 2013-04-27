@@ -1,5 +1,4 @@
-APIStats Data Model
-===================
+# APIStats Data Model
 
 This document describes the information captured in APIStats, including raw request data as well as aggregated information for display in the application. 
 
@@ -19,25 +18,37 @@ The raw request data captured by APIStats is described below. All fields are con
 	* `400 - Bad Request`: The client issued an incorrect request
 	* `500 - Internal Server Error`: The server encountered an error. More information can be obtained in the `error_message` field
 * `content_type`: MIME type for the response
-* `date`: Timestamp when the request was completed in the server
+* `date`: Timestamp when the request was completed in the server, in ISO format (i.e. 2007-06-09T17:46:21)
 * `error`: `true` or `false`. When there is an error, there will be an entry here with all the [error](#error) fields
 * `response_time`: time it takes for the server to produce an API response (in ms)
 * `response_size`: size of the response (in Kb)
+* `remote_ip`: IP of the user issuing
+
+#### Example
+
+
+```
+{
+	"name": "API Name",
+	"version": "v1",
+	"request_url": "http://localhost/apiName/v1/list.json",
+	"request_method": "GET",
+	"host": "localhost",
+	"referer": "http://localhost/webapp",
+	"status_code": "200",
+	"content_type": "application/json",
+	"date": "2007-06-09T17:46:21",
+	"error": false,
+	"response_time": 120,
+	"response_size": 52,
+	"remote_ip": "127.0.0.1"
+}
+```
+
 
 
 ## Error
 
-An error occurs when the client issues a bad request, or when the server cannot produce a regular API response to the client. In both cases an error message is returned, an example of which follows (from the WHite House's [api-standards](https://github.com/WhiteHouse/api-standards/blob/master/README.md#error-handling)):
+An error occurs when the client issues a bad request, or when the server cannot produce a regular API response to the client. In both cases an error message is returned. To see an example, see the [following](https://github.com/WhiteHouse/api-standards/blob/master/README.md#error-handling) from the WHite House's api-standards project
 
-```
-{
-  "status" : "400",
-  "developerMessage" : "Verbose, plain language description of the problem. Provide developers
-   suggestions about how to solve their problems here",
-  "userMessage" : "This is a message that can be passed along to end-users, if needed.",
-  "errorCode" : "444444",
-  "more info" : "http://www.example.gov/developer/path/to/help/for/444444,
-   http://drupal.org/node/444444",
-}
-```
 
