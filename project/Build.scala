@@ -11,6 +11,7 @@ object ApplicationBuild extends Build {
     // Add your project dependencies here,
     jdbc,
     anorm,
+    "com.typesafe.akka" %% "akka-camel" % "2.1.2",
     "org.reactivemongo" %% "play2-reactivemongo" % "0.9"
   )
 
