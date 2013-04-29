@@ -6,6 +6,7 @@ This document describes the information captured in APIStats, including raw requ
 
 The raw request data captured by APIStats is described below. All fields are considered optional, when they are missing in some documents no visualization will be available for the time range in which those documents are displayed and / or queried. It is recommended that the API captures as many of these fields as possible, to provide a better analytical capability to the application. Most of these fields can be obtained by commong programming practices, with all modern languages that are used today to develop web applications and APIs. 
 
+* `id`: API id. Each application / system is usually composed of a collection of Web or REST APIs that provide the functionality needed. Each API needs to have a unique id in order to be able to perform aggregation.
 * `name`: The API name
 	ex. Magazines
 * `version`: API version for this particular request. Usually takes the following form: v1, v2, etc.	 	
@@ -35,7 +36,7 @@ The raw request data captured by APIStats is described below. All fields are con
 	"request_method": "GET",
 	"host": "localhost",
 	"referer": "http://localhost/webapp",
-	"status_code": "200",
+	"status_code": 200,
 	"content_type": "application/json",
 	"date": "2007-06-09T17:46:21",
 	"error": false,
@@ -49,6 +50,6 @@ The raw request data captured by APIStats is described below. All fields are con
 
 ## Error
 
-An error occurs when the client issues a bad request, or when the server cannot produce a regular API response to the client. In both cases an error message is returned. To see an example, see the [following](https://github.com/WhiteHouse/api-standards/blob/master/README.md#error-handling) from the WHite House's api-standards project
+An error occurs when the client issues a bad request, or when the server cannot produce a regular API response to the client. In both cases an error message is returned. To see an example, see the [following](https://github.com/WhiteHouse/api-standards/blob/master/README.md#error-handling) from the White House's api-standards project
 
 
