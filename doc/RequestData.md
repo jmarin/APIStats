@@ -30,6 +30,7 @@ The raw request data captured by APIStats is described below. All fields are con
 
 ```
 {
+	"id": 1,
 	"name": "API Name",
 	"version": "v1",
 	"request_url": "http://localhost/apiName/v1/list.json",

@@ -12,12 +12,13 @@ object ApplicationBuild extends Build {
     jdbc,
     anorm,
     "com.typesafe.akka" %% "akka-camel" % "2.1.2",
+    "org.apache.camel" % "camel-jetty" % "2.10.4",
     "org.reactivemongo" %% "play2-reactivemongo" % "0.9"
   )
 
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
-    // Add your own project settings here      
+    //resolvers += "Apache releases" at "https://repository.apache.org/content/repositories/releases/"  
   )
 
 }
