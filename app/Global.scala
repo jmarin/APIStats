@@ -3,7 +3,7 @@ import play.api.Play.current
 import com.typesafe.config._
 import java.io._
 import play.api.libs.concurrent.Akka
-import akka.actor.{ActorSystem, Props}
+import akka.actor.{ ActorSystem, Props }
 
 import models.resource._
 
@@ -24,6 +24,6 @@ object Global extends GlobalSettings {
 
   override def onStop(app: Application) {
     Logger.info("APIStats stopping")
-  } 
+  }
 
 }
