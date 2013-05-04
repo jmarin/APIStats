@@ -45,8 +45,6 @@ class JsonSpec extends Specification {
         52,
         "127.0.0.1")
 
-      println(Json.toJson(message))
-
       Json.toJson(message) must beEqualTo(jsonMessage)
 
       Json.fromJson[Message](jsonMessage).get must beEqualTo(message)

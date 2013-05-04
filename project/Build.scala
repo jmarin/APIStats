@@ -13,7 +13,8 @@ object ApplicationBuild extends Build {
     anorm,
     "com.typesafe.akka" %% "akka-camel" % "2.1.2",
     "org.apache.camel" % "camel-jetty" % "2.10.4",
-    "org.reactivemongo" %% "play2-reactivemongo" % "0.9"
+    "org.reactivemongo" %% "play2-reactivemongo" % "0.9",
+    "joda-time" % "joda-time" % "2.2"
   )
 
 

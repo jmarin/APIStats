@@ -11,15 +11,18 @@ package object globals {
   lazy val confFile = ConfigFactory.parseFile(new File("conf/application.conf")).resolve()
   lazy val httpEndpoint = confFile.getString("http-endpoint")
   lazy val isDemo = confFile.getString("isDemo")
+  lazy val mongoServers = confFile.getString("mongodb.servers")
+  lazy val mongoDB = confFile.getString("mongodb.db")
+  lazy val requestCollSize = confFile.getInt("request-collection.size")
 }
 
 object Global extends GlobalSettings {
 
   override def onStart(app: Application) {
     Logger.info("APIStats starting")
-    Logger.debug("Application listening for messages at " + globals.httpEndpoint)
+    //Logger.debug("Application listening for messages at " + globals.httpEndpoint)
 
-    val httpEndpoint = Akka.system.actorOf(Props[RequestHttpEndpoint], name = "httpEndpointActor")
+    //val httpEndpoint = Akka.system.actorOf(Props[RequestHttpEndpoint], name = "httpEndpointActor")
   }
 
   override def onStop(app: Application) {
