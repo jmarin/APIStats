@@ -7,12 +7,10 @@ import play.api.test.Helpers._
 import play.api.libs.json._
 import models._
 
-
-
 class JsonSpec extends Specification {
 
-  "Message" should {
-    "Serialize and deserialize" in {
+  "JSON Model" should {
+    "Message: Serialize and deserialize" in {
       val jsonMessage = Json.obj(
         "id" -> 1,
         "name" -> "API Name",
@@ -48,6 +46,18 @@ class JsonSpec extends Specification {
       Json.toJson(message) must beEqualTo(jsonMessage)
 
       Json.fromJson[Message](jsonMessage).get must beEqualTo(message)
+    }
+
+    "GlobalStats: Serialize and deserialize" in {
+      val jsonGlobalStats = Json.obj(
+        "total_count" -> 100,
+        "total_error_count" -> 2,
+        "unique_api_count" -> 5)
+
+      val globalStats = GlobalStats(100, 2, 5)
+
+      Json.toJson(globalStats) must beEqualTo(jsonGlobalStats)
+      Json.fromJson[GlobalStats](jsonGlobalStats).get must beEqualTo(globalStats)
     }
 
   }

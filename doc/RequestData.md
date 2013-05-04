@@ -2,9 +2,9 @@
 
 This document describes the information captured in APIStats, including raw request data as well as aggregated information for display in the application. 
 
-## Request Data
+## Raw Request Data
 
-The raw request data captured by APIStats is described below. All fields are considered optional, when they are missing in some documents no visualization will be available for the time range in which those documents are displayed and / or queried. It is recommended that the API captures as many of these fields as possible, to provide a better analytical capability to the application. Most of these fields can be obtained by common programming practices, with all modern languages that are used today to develop web applications and APIs. 
+The raw request data captured by APIStats is described below. All fields are considered optional, when they are missing in some documents no visualization will be available for the time range in which those documents are displayed and / or queried. It is recommended that the API captures as many of these fields as possible, to provide better analytical capabilities to the application. Most of these fields can be obtained by common programming practices, with all modern languages that are used today to develop web applications and APIs. 
 
 * `id`: API id. Each application / system is usually composed of a collection of Web or REST APIs that provide the functionality needed. Each API needs to have a unique id in order to be able to perform aggregation.
 * `name`: The API name
@@ -49,8 +49,22 @@ The raw request data captured by APIStats is described below. All fields are con
 
 
 
-## Error
+### Error
 
 An error occurs when the client issues a bad request, or when the server cannot produce a regular API response to the client. In both cases an error message is returned. To see an example, see the [following](https://github.com/WhiteHouse/api-standards/blob/master/README.md#error-handling) from the White House's api-standards project
+
+## Aggregated Request Data
+
+The different visualizations in APIStats are supported by several aggregated collections, as follows.
+
+### Global Statistics
+
+Defines global metrics for all API statistics of an APIStats instance. A single instance may include several applications or systems that  include web APIs that are sending raw request data in the course of their usage.
+
+* `total_count`: total number of API hits captured by this APIStats instance. The sum of all total counts of individual APIs sending data to this instance. 
+* `total_error_count`: total number of captured errors for all APIs sending data to this instance. 
+* `unique_api_names`: total number of unique APIs that have sent data to the system, up to this point. 
+
+
 
 
