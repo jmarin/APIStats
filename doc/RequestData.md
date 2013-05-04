@@ -19,7 +19,7 @@ The raw request data captured by APIStats is described below. All fields are con
 	* `400 - Bad Request`: The client issued an incorrect request
 	* `500 - Internal Server Error`: The server encountered an error. More information can be obtained in the `error_message` field
 * `content_type`: MIME type for the response
-* `date`: Timestamp when the request was completed in the server, in ISO format (i.e. 2007-06-09T17:46:21)
+* `date`: Timestamp when the request was completed in the server, in seconds from the epoch
 * `error`: `true` or `false`. When there is an error, there will be an entry here with all the [error](#error) fields
 * `response_time`: time it takes for the server to produce an API response (in ms)
 * `response_size`: size of the response (in Kb)
@@ -39,7 +39,7 @@ The raw request data captured by APIStats is described below. All fields are con
 	"referer": "http://localhost/webapp",
 	"status_code": 200,
 	"content_type": "application/json",
-	"date": "2007-06-09T17:46:21",
+	"date": 1351504814,
 	"error": false,
 	"response_time": 120,
 	"response_size": 52,
