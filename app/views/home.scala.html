@@ -1,4 +1,12 @@
 @main("APIStats - Home") {
+<script type="text/javascript"> 
+	var updateCounter = function(count) {
+		//console.log(count);
+		$('#totalReqCount').html('<span>' + count + '</span>')
+	}
+		
+</script>
+<iframe src="/countRequest"></iframe>
   <div class="container-fluid">
     <div class="row-fluid">
     	<div class="span12">
@@ -15,7 +23,7 @@
 					<div class="span3">
 	  					<span id="totalReqs">
 	  						<h1>
-	  							<div id="totalReqCount">35,456</div>
+	  							<div id="totalReqCount">0</div>
 	  						</h1>
 	  						<h4>requests</h4>
 	  					</span>

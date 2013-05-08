@@ -12,6 +12,7 @@ package object globals {
   lazy val confFile = ConfigFactory.parseFile(new File("conf/application.conf")).resolve()
   lazy val httpEndpoint = confFile.getString("http-endpoint")
   lazy val isDemo = confFile.getString("isDemo")
+  lazy val refreshRate = confFile.getInt("refresh-rate")
   lazy val mongoServers = confFile.getString("mongodb.servers")
   lazy val mongoDB = confFile.getString("mongodb.db")
   lazy val requestCollSize = confFile.getInt("request-collection.size")
