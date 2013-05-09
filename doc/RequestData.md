@@ -62,8 +62,34 @@ The different visualizations in APIStats are supported by several aggregated col
 Defines global metrics for all API statistics of an APIStats instance. A single instance may include several applications or systems that  include web APIs that are sending raw request data in the course of their usage.
 
 * `total_count`: total number of API hits captured by this APIStats instance. The sum of all total counts of individual APIs sending data to this instance. 
-* `total_error_count`: total number of captured errors for all APIs sending data to this instance. 
-* `unique_api_names`: total number of unique APIs that have sent data to the system, up to this point. 
+* `error_count`: total number of captured errors for all APIs sending data to this instance. 
+* `apis`: contains a document with all the APIs that have been hit in the system. Each API document contains the total count and / or error count as well as the sum of all response times and response sizes for this particular API.
+
+#### Example
+
+```
+{
+	total_count: 120,
+	error_count: 8,
+	apis: {
+		"API 1": {
+			count: 50,
+			error: 4,
+			response_time: 12590,
+			response_size: 234408
+		},
+		"API 2": {
+			count: 70,
+			error: 4,
+			count: 70,
+			response_time: 120202,
+			response_size: 520193
+		}
+	}
+}
+```
+
+
 
 
 

@@ -1,8 +1,13 @@
 @main("APIStats - Home") {
 <script type="text/javascript"> 
-	var updateCounter = function(count) {
-		//console.log(count);
-		$('#totalReqCount').html('<span>' + count + '</span>')
+	var updateCounter = function(data) {
+		var total = data.split(',')[0];
+		var errors = data.split(',')[1];
+		var percErrors = Math.ceil((errors / total * 100) * 100) / 100;
+		console.log(data);
+		$('#totalReqCount').html('<span>' + total + '</span>');
+		$('#totalErrCount').html('<span>(' + percErrors + ' % errors)</span>'); 
+
 	}
 		
 </script>
@@ -26,6 +31,8 @@
 	  							<div id="totalReqCount">0</div>
 	  						</h1>
 	  						<h4>requests</h4>
+	  						<h6><div id="totalErrCount"></div></h6>
+	  						<!--<span id="errorPercentage">(<div id="total_errors">0</div> % errors)</span>-->
 	  					</span>
 					</div>
 

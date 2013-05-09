@@ -59,11 +59,14 @@ object Application extends Controller with MongoController {
   def insertRequest = Action(parse.json) { request =>
     Async {
       val message = Json.fromJson[Message](request.body).get
+      val apiName = message.name
       val futureInsert = messages.insert(message)
+      val error_count = if (message.error == true) 1 else 0
       val query = BSONDocument()
       val updateQuery = BSONDocument(
         "$inc" -> BSONDocument(
-          "total_count" -> 1))
+          "total_count" -> 1,
+          "error_count" -> error_count))
       val futureUpdate = globalStats.update(
         query,
         updateQuery,
@@ -82,7 +85,10 @@ object Application extends Controller with MongoController {
       val foundQuery = globalStats.find(query).one
       def updateCount = for {
         found <- foundQuery
-      } yield found.get.getAs[BSONInteger]("total_count").get.value.toString
+        val total = found.get.getAs[BSONInteger]("total_count").get.value
+        val error = found.get.getAs[BSONInteger]("error_count").get.value
+      } yield  total.toString +  "," + error.toString//(error / total * 100).toString 
+      
       Await.result(updateCount, 200 milliseconds)
     }
 
