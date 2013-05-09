@@ -60,13 +60,20 @@ object Application extends Controller with MongoController {
     Async {
       val message = Json.fromJson[Message](request.body).get
       val apiName = message.name
+      val responseTime = message.response_time
+      val responseSize = message.response_size
       val futureInsert = messages.insert(message)
       val error_count = if (message.error == true) 1 else 0
       val query = BSONDocument()
       val updateQuery = BSONDocument(
         "$inc" -> BSONDocument(
           "total_count" -> 1,
-          "error_count" -> error_count))
+          "error_count" -> error_count,
+          apiName + ".count" -> 1,
+          apiName + ".error" -> error_count,
+          apiName + ".response_time" -> responseTime,
+          apiName + ".response_size" -> responseSize
+          ))
       val futureUpdate = globalStats.update(
         query,
         updateQuery,
@@ -87,8 +94,7 @@ object Application extends Controller with MongoController {
         found <- foundQuery
         val total = found.get.getAs[BSONInteger]("total_count").get.value
         val error = found.get.getAs[BSONInteger]("error_count").get.value
-      } yield  total.toString +  "," + error.toString//(error / total * 100).toString 
-      
+      } yield  total.toString +  "," + error.toString
       Await.result(updateCount, 200 milliseconds)
     }
 
