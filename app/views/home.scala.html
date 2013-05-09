@@ -3,7 +3,7 @@
 	var updateCounter = function(data) {
 		var total = data.split(',')[0];
 		var errors = data.split(',')[1];
-		var percErrors = Math.ceil((errors / total * 100) * 100) / 100;
+		var percErrors = Math.ceil((errors / total * 100) * 1000) / 1000;
 		console.log(data);
 		$('#totalReqCount').html('<span>' + total + '</span>');
 		$('#totalErrCount').html('<span>(' + percErrors + ' % errors)</span>'); 
