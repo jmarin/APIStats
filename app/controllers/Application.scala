@@ -69,11 +69,11 @@ object Application extends Controller with MongoController {
         "$inc" -> BSONDocument(
           "total_count" -> 1,
           "error_count" -> error_count,
-          apiName + ".count" -> 1,
-          apiName + ".error" -> error_count,
-          apiName + ".response_time" -> responseTime,
-          apiName + ".response_size" -> responseSize
-          ))
+          "apis." + apiName + ".count" -> 1,
+          "apis." + apiName + ".error" -> error_count,
+          "apis." + apiName + ".response_time" -> responseTime,
+          "apis." + apiName + ".response_size" -> responseSize))
+
       val futureUpdate = globalStats.update(
         query,
         updateQuery,
@@ -94,13 +94,13 @@ object Application extends Controller with MongoController {
         found <- foundQuery
         val total = found.get.getAs[BSONInteger]("total_count").get.value
         val error = found.get.getAs[BSONInteger]("error_count").get.value
-      } yield  total.toString +  "," + error.toString
+      } yield total.toString + "," + error.toString
       Await.result(updateCount, 200 milliseconds)
     }
 
     lazy val enumerator: Enumerator[String] = {
       import play.api.libs.concurrent._
-      Enumerator.fromCallback { () =>
+      Enumerator.generateM {
         Promise.timeout(Some(count), globals.refreshRate milliseconds)
       }
     }

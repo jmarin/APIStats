@@ -9,7 +9,6 @@ import play.api.libs.functional.syntax._
 import reactivemongo.bson._
 
 case class Message(
-  //id: Option[BSONObjectID],
   id: Long,
   name: String,
   version: String,

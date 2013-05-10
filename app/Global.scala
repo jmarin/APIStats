@@ -18,8 +18,8 @@ package object globals {
   lazy val requestCollSize = confFile.getInt("request-collection.size")
   lazy val db = ReactiveMongoPlugin.db
   val actorSystem = ActorSystem("api-stats-system")
-  val messageProcessor = actorSystem.actorOf(
-    Props[MessageProcessor], name = "messageProcessor")
+  // val messageProcessor = actorSystem.actorOf(
+  //   Props[MessageProcessor], name = "messageProcessor")
 }
 
 object Global extends GlobalSettings {
