@@ -92,9 +92,10 @@ object Application extends Controller with MongoController {
       val foundQuery = globalStats.find(query).one
       def updateCount = for {
         found <- foundQuery
-        val total = found.get.getAs[BSONInteger]("total_count").get.value
-        val error = found.get.getAs[BSONInteger]("error_count").get.value
-      } yield total.toString + "," + error.toString
+        //val total = found.get.getAs[BSONInteger]("total_count").get.value
+        //val error = found.get.getAs[BSONInteger]("error_count").get.value
+      } yield found.get.getAs[BSONInteger]("total_count").get.value.toString + "," +
+        found.get.getAs[BSONInteger]("error_count").get.value.toString
       Await.result(updateCount, 200 milliseconds)
     }
 
