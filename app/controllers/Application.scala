@@ -63,16 +63,16 @@ object Application extends Controller with MongoController {
       val responseTime = message.response_time
       val responseSize = message.response_size
       val futureInsert = messages.insert(message)
-      val error_count = if (message.error == true) 1 else 0
+      val error_count = if (message.error == true) 1L else 0L
       val query = BSONDocument()
       val updateQuery = BSONDocument(
         "$inc" -> BSONDocument(
-          "total_count" -> 1,
-          "error_count" -> error_count,
-          "apis." + apiName + ".count" -> 1,
-          "apis." + apiName + ".error" -> error_count,
-          "apis." + apiName + ".response_time" -> responseTime,
-          "apis." + apiName + ".response_size" -> responseSize))
+          "total_count" -> 1L,
+          "error_count" -> error_count))//,
+          // "apis." + apiName + ".count" -> 1,
+          // "apis." + apiName + ".error" -> error_count,
+          // "apis." + apiName + ".response_time" -> responseTime,
+          // "apis." + apiName + ".response_size" -> responseSize))
 
       val futureUpdate = globalStats.update(
         query,
@@ -85,15 +85,13 @@ object Application extends Controller with MongoController {
 
   }
 
-  def countRequest = Action { request =>
+  def requestRT = Action { request =>
 
     def count: String = {
       val query = BSONDocument()
       val foundQuery = globalStats.find(query).one
       def updateCount = for {
         found <- foundQuery
-        //val total = found.get.getAs[BSONInteger]("total_count").get.value
-        //val error = found.get.getAs[BSONInteger]("error_count").get.value
       } yield found.get.getAs[BSONInteger]("total_count").get.value.toString + "," +
         found.get.getAs[BSONInteger]("error_count").get.value.toString
       Await.result(updateCount, 200 milliseconds)
@@ -108,4 +106,20 @@ object Application extends Controller with MongoController {
     Ok.stream(enumerator >>> Enumerator.eof &> Comet(callback = "parent.updateCounter"))
 
   }
+
+  def statsRT() = Action { request =>
+    Ok
+  }
+
+  //Web API
+  def stats() = Action { request =>
+    Async {
+      val query = BSONDocument()
+      val futureStatsList = globalStats.find(query).cursor[GlobalStats].toList
+      futureStatsList.map { stats =>
+        Ok(Json.toJson(stats))
+      }
+    }
+  }
 }
+

@@ -8,22 +8,21 @@ import reactivemongo.bson._
 
 case class GlobalStats(
   total_count: Long,
-  total_error_count: Long,
-  unique_api_count: Int)
+  total_error_count: Long) //,
+//unique_api_count: Int)
 
 object GlobalStats {
 
   implicit val globalStatsFormat = (
     (__ \ 'total_count).format[Long] and
-    (__ \ 'total_error_count).format[Long] and
-    (__ \ 'unique_api_count).format[Int])(GlobalStats.apply, unlift(GlobalStats.unapply))
+    (__ \ 'error_count).format[Long])(GlobalStats.apply, unlift(GlobalStats.unapply))
 
-  implicit object GlobalStatsBDONReader extends BSONDocumentReader[GlobalStats] {
+  implicit object GlobalStatsBSONReader extends BSONDocumentReader[GlobalStats] {
     def read(doc: BSONDocument) = {
       GlobalStats(
         doc.getAs[BSONLong]("total_count").get.value,
-        doc.getAs[BSONLong]("total_error_count").get.value,
-        doc.getAs[BSONInteger]("unique_api_count").get.value)
+        doc.getAs[BSONLong]("error_count").get.value) //,
+      //doc.getAs[BSONInteger]("unique_api_count").get.value)
     }
   }
 
@@ -31,8 +30,8 @@ object GlobalStats {
     def write(stats: GlobalStats): BSONDocument = {
       BSONDocument(
         "total_count" -> stats.total_count,
-        "total_error_count" -> stats.total_error_count,
-        "unique_api_count" -> stats.unique_api_count)
+        "error_count" -> stats.total_error_count) //,
+      //"unique_api_count" -> stats.unique_api_count)
     }
 
   }
