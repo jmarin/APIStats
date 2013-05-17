@@ -51,10 +51,10 @@ class JsonSpec extends Specification {
     "GlobalStats: Serialize and deserialize" in {
       val jsonGlobalStats = Json.obj(
         "total_count" -> 100,
-        "total_error_count" -> 2,
-        "unique_api_count" -> 5)
+        "error_count" -> 2)//,
+        //"unique_api_count" -> 5)
 
-      val globalStats = GlobalStats(100, 2, 5)
+      val globalStats = GlobalStats(100, 2)//, 5)
 
       Json.toJson(globalStats) must beEqualTo(jsonGlobalStats)
       Json.fromJson[GlobalStats](jsonGlobalStats).get must beEqualTo(globalStats)
