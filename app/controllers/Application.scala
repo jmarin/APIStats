@@ -63,11 +63,11 @@ object Application extends Controller with MongoController {
       val responseTime = message.response_time
       val responseSize = message.response_size
       val futureInsert = messages.insert(message)
-      val error_count = if (message.error == true) 1L else 0L
+      val error_count = if (message.error == true) 1 else 0
       val query = BSONDocument()
       val updateQuery = BSONDocument(
         "$inc" -> BSONDocument(
-          "total_count" -> 1L,
+          "total_count" -> 1,
           "error_count" -> error_count,
           "apis." + apiName + ".count" -> 1,
           "apis." + apiName + ".error" -> error_count,

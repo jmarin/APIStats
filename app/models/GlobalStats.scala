@@ -7,21 +7,21 @@ import play.api.libs.functional.syntax._
 import reactivemongo.bson._
 
 case class GlobalStats(
-  total_count: Long,
-  total_error_count: Long) //,
+  total_count: Int,
+  total_error_count: Int) //,
 //unique_api_count: Int)
 
 object GlobalStats {
 
   implicit val globalStatsFormat = (
-    (__ \ 'total_count).format[Long] and
-    (__ \ 'error_count).format[Long])(GlobalStats.apply, unlift(GlobalStats.unapply))
+    (__ \ 'total_count).format[Int] and
+    (__ \ 'error_count).format[Int])(GlobalStats.apply, unlift(GlobalStats.unapply))
 
   implicit object GlobalStatsBSONReader extends BSONDocumentReader[GlobalStats] {
     def read(doc: BSONDocument) = {
       GlobalStats(
-        doc.getAs[BSONLong]("total_count").get.value,
-        doc.getAs[BSONLong]("error_count").get.value) //,
+        doc.getAs[BSONInteger]("total_count").get.value,
+        doc.getAs[BSONInteger]("error_count").get.value) //,
       //doc.getAs[BSONInteger]("unique_api_count").get.value)
     }
   }
