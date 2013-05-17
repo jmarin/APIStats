@@ -68,11 +68,11 @@ object Application extends Controller with MongoController {
       val updateQuery = BSONDocument(
         "$inc" -> BSONDocument(
           "total_count" -> 1L,
-          "error_count" -> error_count))//,
-          // "apis." + apiName + ".count" -> 1,
-          // "apis." + apiName + ".error" -> error_count,
-          // "apis." + apiName + ".response_time" -> responseTime,
-          // "apis." + apiName + ".response_size" -> responseSize))
+          "error_count" -> error_count,
+          "apis." + apiName + ".count" -> 1,
+          "apis." + apiName + ".error" -> error_count,
+          "apis." + apiName + ".response_time" -> responseTime,
+          "apis." + apiName + ".response_size" -> responseSize))
 
       val futureUpdate = globalStats.update(
         query,
