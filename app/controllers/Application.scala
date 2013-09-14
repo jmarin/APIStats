@@ -122,4 +122,3 @@ object Application extends Controller with MongoController {
     }
   }
 }
-
